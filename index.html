@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="6jKeZZDWc85WBzKSs5cSnD">
+<head data-page-node-id="OP7PrFNb9fvZ7PBEHn1hpE">
+<meta charset="UTF-8" data-page-node-id="uyfhmZrk9QZfriGbUjS4SB" />
+<meta name="viewport" content="width=device-width, initial-scale=1" data-page-node-id="QFlTxzplNWAhhocAIlrdak" />
+<title>马淑慧 — 用户洞察 × 产品企划 × AI 产品 × PMM</title>
+<meta name="description" content="马淑慧 · AI 产品经理 / 用户洞察 / 产品企划 / PMM" data-page-node-id="vC9tro2qmwXgHd4FVaGcMV" />
+
+<!--
+  ==================================================================
+  怎么用这个文件
+  ==================================================================
+  1) 改文字：只改下面的「文案区」，搜索 ★文案区★ 即可定位。
+     所有文字都在引号里，改引号里的字就行，不要碰引号外面的标点。
+  2) 换图片：在「文案区」里找 photos: []，
+     把图片文件名填进方括号，用英文逗号隔开。例如：
+         photos: ["images/works/01-hero.jpg", "images/works/01-b.jpg"]
+     一个位置放 1 张就是静止图；放 2 张以上会自动变成横向滚动轮播。
+     图片放进本文件旁边的 images/works/ 文件夹。
+  3) 保存后按 Ctrl+S，浏览器里 F5 刷新。
+  4) 字体已自动加载：英文 Archivo，中文优先 HarmonyOS Sans，
+     退回 Source Han Sans / 系统中文（无需手动配置）。
+  ==================================================================
+-->
+
+<!-- 字体：纯系统字体栈，不请求 Google Fonts（国内会阻塞渲染数秒）。中文走 PingFang SC / 微软雅黑，英文走系统无衬线 -->
+
+<style>
+  /* ---------- 字体堆叠：英文 Archivo，中文 HarmonyOS Sans / 思源黑体 ---------- */
+  :root{
+    --paper:#FFFFFF;
+    --placeholder:#F4F3F0;
+    --ink:#2C2C2C;
+    --ink-soft:#57574F;
+    --ink-faint:#8F8F87;
+    --line:rgba(17,17,17,0.14);
+    --line-soft:rgba(17,17,17,0.07);
+    --brown:#3E2716;
+    --brown-deep:#2A1809;
+    --cream:#F4EEE5;
+    --ease:cubic-bezier(0.22,1,0.36,1);
+    --font:
+      "Public Sans", "Archivo",
+      "HarmonyOS Sans SC", "HarmonyOS Sans",
+      "Source Han Sans SC", "Noto Sans SC",
+      "PingFang SC",
+      -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+      "Microsoft YaHei", sans-serif;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:96px;-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font);
+    font-weight:400;
+    font-feature-settings:"palt" 1;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    text-rendering:optimizeLegibility;
+  }
+  ::selection{background:var(--brown);color:var(--cream)}
+  ::-webkit-scrollbar{width:8px}
+  ::-webkit-scrollbar-track{background:transparent}
+  ::-webkit-scrollbar-thumb{background:rgba(17,17,17,.14);border-radius:99px}
+
+  h1,h2,h3,h4,p,dl,dd,dt,figure{margin:0}
+  ul{margin:0;padding:0;list-style:none}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+
+  .shell{max-width:1560px;margin:0 auto;padding:0 20px}
+  @media(min-width:768px){.shell{padding:0 40px}}
+  @media(min-width:1024px){.shell{padding:0 56px}}
+
+  .link-calm{position:relative;display:inline-block}
+  .link-calm::after{
+    content:"";position:absolute;left:0;bottom:-2px;width:100%;height:1px;
+    background:currentColor;transform:scaleX(0);transform-origin:right;
+    transition:transform .7s var(--ease);
+  }
+  .link-calm:hover::after{transform:scaleX(1);transform-origin:left}
+
+  /* ---------- 顶栏 ---------- */
+  .site-header{
+    position:fixed;inset-inline:0;top:0;z-index:50;
+    background:rgba(255,255,255,0);
+    border-bottom:1px solid rgba(17,17,17,0);
+    transition:background-color .6s var(--ease),border-color .6s var(--ease),backdrop-filter .6s var(--ease);
+  }
+  .site-header.is-lifted{
+    background:rgba(255,255,255,.88);
+    border-bottom-color:rgba(17,17,17,.12);
+    backdrop-filter:saturate(140%) blur(14px);
+    -webkit-backdrop-filter:saturate(140%) blur(14px);
+  }
+  .site-header__inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+  @media(min-width:768px){.site-header__inner{height:72px}}
+  .brand{display:flex;align-items:baseline;gap:14px}
+  .brand__name{font-size:15px;font-weight:800;letter-spacing:.04em}
+  .brand__role{display:none;font-size:11px;letter-spacing:.12em;color:var(--ink-faint);font-weight:500}
+  @media(min-width:768px){.brand__role{display:inline}}
+  .nav{display:flex;align-items:center;gap:22px}
+  @media(min-width:768px){.nav{gap:34px}}
+  .nav a{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;transition:opacity .4s var(--ease)}
+  @media(min-width:768px){.nav a{font-size:12px}}
+  .nav a:hover{opacity:.5}
+  .nav a.nav__contact::after{content:"•";margin-left:16px}
+
+  /* ---------- 渐显 ---------- */
+  .reveal{opacity:0;transform:translate3d(0,14px,0);
+    transition:opacity 1.1s var(--ease),transform 1.1s var(--ease);
+    transition-delay:var(--d,0ms);will-change:opacity,transform}
+  .reveal.is-in{opacity:1;transform:none}
+  .enter{opacity:0;transform:translate3d(0,18px,0);
+    animation:riseIn 1.6s var(--ease) forwards;animation-delay:var(--d,0ms)}
+  @keyframes riseIn{to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .reveal,.enter{opacity:1!important;transform:none!important;animation:none!important;transition:none!important}
+  }
+
+  /* ---------- 首屏：通栏流动波纹（动画只在这第一屏） ---------- */
+  .hero-stage{
+    position:relative;overflow:hidden;background:var(--paper);
+    min-height:calc(100svh - 64px);
+    display:flex;align-items:stretch;
+    padding:56px 0 40px;
+  }
+  @media(min-width:768px){.hero-stage{min-height:calc(100svh - 76px);padding:72px 0 56px}}
+  /* 波纹画布：铺满整个首屏，通栏无边距 */
+  .hero-stage > canvas{
+    position:absolute;inset:0;width:100%;height:100%;
+    display:block;pointer-events:none;z-index:0;
+  }
+  /* 文字叠在波纹之上 */
+  .hero-stage > .shell{position:relative;z-index:2;display:flex;width:100%}
+  .hero-frame{
+    position:relative;width:100%;
+    display:flex;flex-direction:column;justify-content:space-between;gap:64px;
+  }
+  @media(min-width:768px){.hero-frame{gap:88px}}
+  .hero-top,.hero-mid{position:relative;z-index:2}
+  .hero-top{display:flex;align-items:baseline;justify-content:space-between;gap:16px 32px;flex-wrap:wrap}
+  .hero__eyebrow{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.18em}
+  .hero__sub{font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--ink-soft)}
+  .hero-mid{max-width:34em}
+  .hero__title{font-size:clamp(2.5rem,5.6vw,4.9rem);font-weight:600;line-height:1.22;letter-spacing:.01em}
+  .hero__title span{display:block}
+  .hero__subEn{margin-top:20px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--ink-faint)}
+  .hero__body{margin-top:24px;font-size:14px;line-height:2;color:var(--ink-soft);max-width:30em}
+  @media(min-width:768px){.hero__body{font-size:15px}}
+
+  /* ---------- 章节头：粗体小标签 + 通栏实线 ---------- */
+  .sec-head__eyebrow{display:flex;align-items:center;gap:20px}
+  .sec-head__eyebrow::after{content:"";flex:1;height:1px;background:var(--ink)}
+  .sec-head__label{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+  .sec-head__row{margin-top:32px}
+  @media(min-width:768px){.sec-head__row{margin-top:48px}}
+  @media(min-width:1024px){.sec-head__row{display:flex;align-items:flex-end;justify-content:space-between;gap:80px}}
+  .sec-head__title{max-width:22em;font-size:clamp(1.75rem,3.4vw,3rem);font-weight:600;line-height:1.35;letter-spacing:.005em}
+  .sec-head__title span{display:block}
+  .sec-head__aside{margin-top:20px;font-size:12px;font-weight:500;line-height:2;letter-spacing:.06em;color:var(--ink-faint)}
+  @media(min-width:1024px){.sec-head__aside{margin-top:0;max-width:24em;flex-shrink:0}}
+
+  section{padding-top:96px;padding-bottom:96px}
+  @media(min-width:768px){section{padding-top:144px;padding-bottom:144px}}
+  @media(min-width:1024px){section{padding-top:176px;padding-bottom:176px}}
+
+  /* ---------- About ---------- */
+  #about{padding-top:160px}
+  @media(min-width:768px){#about{padding-top:200px}}
+  @media(min-width:1024px){#about{padding-top:240px}}
+  /* What I Bring 与上一模块（How I Work）之间拉开 */
+  #bring{padding-top:120px}
+  @media(min-width:768px){#bring{padding-top:176px}}
+  @media(min-width:1024px){#bring{padding-top:224px}}
+  /* Contact 与上一模块（What I Bring）之间再拉开一档 */
+  #contact{padding-top:144px}
+  @media(min-width:768px){#contact{padding-top:200px}}
+  @media(min-width:1024px){#contact{padding-top:256px}}
+  .about__intro{margin-top:48px;max-width:52em;font-size:17px;line-height:2;font-weight:500;color:var(--ink)}
+  @media(min-width:768px){.about__intro{margin-top:64px;font-size:19px}}
+  .about__note{margin-top:56px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.18em;color:var(--ink-faint)}
+  @media(min-width:768px){.about__note{margin-top:72px}}
+  .about__phases{margin-top:48px;display:grid;gap:48px}
+  @media(min-width:768px){.about__phases{margin-top:72px;grid-template-columns:repeat(3,1fr);gap:48px}}
+  @media(min-width:1024px){.about__phases{gap:64px}}
+  .about__phase{padding-top:24px}
+  .about__phase-no{font-size:12px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:.1em}
+  .about__phase-title{margin-top:28px;font-size:1.625rem;font-weight:600;line-height:1.3;letter-spacing:.005em}
+  @media(min-width:768px){.about__phase-title{font-size:1.75rem}}
+  .about__phase-en{margin-top:10px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+  .about__phase-body{margin-top:20px;font-size:14px;line-height:2.05;color:var(--ink-soft)}
+  .about__closer{margin-top:64px;font-size:16px;line-height:2.05;font-weight:500;color:var(--ink);max-width:54em}
+  @media(min-width:768px){.about__closer{margin-top:88px;font-size:17px}}
+
+  /* ---------- 案例：横向卡片（默认折叠） ---------- */
+  .works-list{border-top:1px solid var(--line)}
+  .case-card{border-bottom:1px solid var(--line)}
+  .case-card__head{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:40px;
+    padding:48px 0;
+    cursor:pointer;
+    list-style:none;
+    transition:opacity .5s var(--ease);
+  }
+  @media(min-width:1024px){
+    .case-card__head{
+      grid-template-columns:1fr 380px;
+      gap:72px;
+      padding:72px 0;
+      align-items:start;
+    }
+  }
+  .case-card__head::-webkit-details-marker{display:none}
+  .case-card__head:hover .case-card__main{opacity:.6}
+
+  .case-card__no{
+    display:block;
+    font-size:12px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:.12em;
+  }
+  .case-card__title{
+    margin-top:20px;
+    font-size:clamp(1.625rem,3vw,2.5rem);font-weight:600;line-height:1.3;letter-spacing:.005em;
+  }
+  .case-card__subtitle{
+    margin-top:12px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-faint);
+  }
+  .case-card__brief{
+    margin-top:24px;max-width:42em;
+    font-size:15px;line-height:2;color:var(--ink-soft);
+  }
+
+  /* 卡片上的关键数据 */
+  .case-card__stats{
+    margin-top:36px;
+    display:grid;grid-template-columns:repeat(2,1fr);gap:24px 32px;
+    padding-top:8px;
+  }
+  @media(min-width:768px){
+    .case-card__stats{grid-template-columns:repeat(4,1fr);gap:28px}
+  }
+  .case-card__stats li{display:flex;flex-direction:column;gap:8px;text-align:center;align-items:center}
+  .case-card__metric-v{
+    font-size:1.375rem;line-height:1;font-variant-numeric:tabular-nums;
+    letter-spacing:-.02em;font-weight:800;
+  }
+  @media(min-width:768px){.case-card__metric-v{font-size:1.625rem}}
+  .case-card__metric-l{font-size:11px;font-weight:500;line-height:1.6;letter-spacing:.08em;color:var(--ink-faint)}
+
+  /* 查看详情 */
+  .case-card__cue{
+    margin-top:36px;display:inline-flex;align-items:center;gap:10px;
+    font-size:12px;font-weight:800;letter-spacing:.1em;
+  }
+  .case-card__cue-arrow{
+    display:inline-flex;align-items:center;justify-content:center;
+    transition:transform .5s var(--ease);
+  }
+  .case-card[open] .case-card__cue-arrow{transform:rotate(90deg)}
+
+  /* 卡片小图 */
+  .case-card__thumb{order:-1}
+  @media(min-width:1024px){.case-card__thumb{order:0}}
+  /* thumbmeta 已移除 */
+
+  /* ---------- 案例展开后内容 ---------- */
+  .case-card__body{padding:8px 0 72px}
+  @media(min-width:1024px){.case-card__body{padding:16px 0 120px;padding-left:96px}}
+  .case-card__intro{font-size:18px;line-height:1.9;font-weight:400;color:var(--ink)}
+  @media(min-width:768px){.case-card__intro{font-size:22px;line-height:1.85}}
+  .case-card__introMeta{margin-top:14px;font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--ink-faint)}
+  .case-card__lead{margin-top:32px;font-size:15px;line-height:2.05;color:var(--ink-soft);max-width:56em}
+  @media(min-width:768px){.case-card__lead{font-size:16px;margin-top:40px}}
+  .case-card__closer{margin-top:56px;font-size:16px;line-height:1.9;color:var(--ink);max-width:56em;font-weight:400}
+
+  /* ---------- 案例内的子分区段（01 / 02 / 03 / 04） ---------- */
+  .sub{margin-top:64px}
+  @media(min-width:768px){.sub{margin-top:96px}}
+  .sub__head{
+    display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+    padding-top:24px;
+  }
+  .sub__no{font-size:12px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:.1em}
+  .sub__title{font-size:1.375rem;font-weight:600;line-height:1.35;letter-spacing:.005em}
+  @media(min-width:768px){.sub__title{font-size:1.5rem}}
+  .sub__subEn{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-left:auto}
+  .sub__body{margin-top:24px;display:flex;flex-direction:column;gap:24px;max-width:64em}
+  @media(min-width:768px){.sub__body{margin-top:32px;gap:28px}}
+  @media(min-width:1024px){
+    .sub__body--with-img{display:grid;grid-template-columns:5fr 2fr;column-gap:56px;row-gap:32px;align-items:start}
+  }
+  .sub__text{display:flex;flex-direction:column;gap:20px}
+  @media(min-width:768px){.sub__text{gap:24px}}
+  .sub__body p{font-size:15px;line-height:2.05;color:var(--ink-soft)}
+  .sub__bullets{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+  .sub__bullets li{
+    border:1px solid var(--line);padding:8px 16px;
+    font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--ink-soft);
+  }
+  .sub__emphasis{margin-top:12px;display:flex;flex-direction:column;gap:12px}
+  .sub__emphasis p{
+    font-size:17px;line-height:1.8;color:var(--ink);font-weight:800;letter-spacing:.01em;
+  }
+  @media(min-width:768px){.sub__emphasis p{font-size:19px}}
+  .sub__fig{display:flex;flex-direction:column;gap:16px}
+  @media(min-width:768px){.sub__fig{gap:20px}}
+  /* 按原图比例等比缩放，不裁剪、不拉伸、不留白边 */
+  .sub__fig img{width:100%;height:auto;display:block;background:var(--placeholder)}
+  /* 桌面端给图片一个尺寸上限，避免竖图过高、与文字块高度失衡 */
+  @media(min-width:1024px){
+    .sub__fig img{max-width:300px}
+    /* 单图微调：通过数据 fit 字段覆盖默认尺寸 */
+    .sub__fig img.img-fit-small{max-width:200px}
+    .sub__fig img.img-fit-large{max-width:380px}
+  }
+
+  /* ---------- 案例视觉（图片轮播） ---------- */
+  /* ---------- 展开后：关键数据 ---------- */
+  .key-numbers{margin-top:80px;padding-top:24px}
+  @media(min-width:768px){.key-numbers{margin-top:104px}}
+  .key-numbers__title{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+  .key-numbers__grid{margin-top:32px;display:grid;gap:32px}
+  @media(min-width:768px){.key-numbers__grid{grid-template-columns:repeat(5,1fr);gap:32px}}
+  .key-numbers__item{padding-top:20px}
+  @media(min-width:768px){.key-numbers__item{padding-top:0}}
+  .key-numbers__v{font-size:1.75rem;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.02em;font-weight:800}
+  @media(min-width:768px){.key-numbers__v{font-size:2rem}}
+  .key-numbers__l{margin-top:10px;font-size:11px;font-weight:500;letter-spacing:.08em;color:var(--ink-faint)}
+
+  /* ---------- 图片框 / 占位块 ---------- */
+  .frame{position:relative;width:100%;overflow:hidden;background:var(--placeholder)}
+  .frame-16x9{aspect-ratio:16/9}
+  .frame-3x2{aspect-ratio:3/2}
+  .frame-4x3{aspect-ratio:4/3}
+  .frame-1x1{aspect-ratio:1/1}
+  .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+  .ph__inner{position:absolute;inset:12px;border:1px solid rgba(17,17,17,.1);pointer-events:none}
+  @media(min-width:768px){.ph__inner{inset:20px}}
+  .ph__body{position:relative;padding:0 32px;text-align:center;max-width:36em}
+  .ph__slot{display:block;font-size:11px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:.18em;text-transform:uppercase}
+  .ph__hint{display:block;margin-top:14px;font-size:13px;line-height:1.9;color:var(--ink-soft)}
+  @media(min-width:768px){.ph__hint{font-size:14px}}
+  .ph__meta{display:block;margin-top:18px;font-size:10px;font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:.14em;color:var(--ink-faint)}
+
+  /* ---------- 滚动图片（轮播） ---------- */
+  .roll__viewport{
+    overflow-x:auto;overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;-ms-overflow-style:none;
+    cursor:grab;
+  }
+  .roll__viewport::-webkit-scrollbar{display:none}
+  .roll__viewport.is-dragging{cursor:grabbing;scroll-snap-type:none}
+  /* 关键：禁止图片原生拖拽。否则按住图片左滑会触发系统"拖图"，
+     浏览器随即发出 pointercancel，自定义拖拽直接失效 */
+  .roll img{-webkit-user-drag:none;-khtml-user-drag:none;user-drag:none}
+  .roll__track{-webkit-user-select:none;user-select:none}
+  .roll__track{display:flex;gap:16px}
+  @media(min-width:768px){.roll__track{gap:24px}}
+  .roll__item{flex:0 0 88%;scroll-snap-align:center}
+  @media(min-width:768px){.roll__item{flex:0 0 80%}}
+  @media(min-width:1024px){.roll__item{flex:0 0 72%}}
+  .roll--single .roll__item{flex:0 0 100%}
+  .roll__caption{margin-top:16px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+  .cap-no{flex-shrink:0;font-size:11px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:.14em;text-transform:uppercase}
+  .cap-text{font-size:12px;line-height:1.8;color:var(--ink-soft);flex:1 1 auto}
+  .roll__nav{margin-left:auto;display:flex;align-items:center;gap:12px;flex-shrink:0}
+  .roll__btn{
+    width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;
+    border:1px solid var(--ink);border-radius:50%;
+    font-size:12px;line-height:1;color:var(--ink);
+    transition:background-color .4s var(--ease),color .4s var(--ease);
+  }
+  .roll__btn:hover{background:var(--ink);color:var(--paper)}
+  .roll__btn[disabled]{opacity:.25;cursor:default;pointer-events:none}
+  .roll__count{font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:.12em;color:var(--ink-faint);min-width:52px;text-align:center}
+  .roll__hint{margin-top:12px;font-size:11px;letter-spacing:.06em;color:var(--ink-faint)}
+
+  /* ---------- How I Work / Approach ---------- */
+  .how__grid{margin-top:56px;display:grid;gap:48px}
+  @media(min-width:768px){.how__grid{margin-top:88px;grid-template-columns:repeat(3,1fr);gap:48px}}
+  @media(min-width:1024px){.how__grid{gap:64px}}
+  .how__item{padding-top:24px}
+  .how__top{display:flex;align-items:baseline;justify-content:space-between}
+  .how__no{font-size:12px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:.1em}
+  .how__en{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-faint)}
+  .how__title{margin-top:28px;font-size:1.5rem;font-weight:600;line-height:1.35;letter-spacing:.005em}
+  @media(min-width:768px){.how__title{font-size:1.625rem}}
+  .how__body{margin-top:20px;font-size:14px;line-height:2.05;color:var(--ink-soft)}
+  .how__detail{margin-top:20px;font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--ink-faint)}
+
+  /* ---------- What I Bring ---------- */
+  .bring__grid{margin-top:56px;display:grid;gap:1px;border-top:1px solid var(--line)}
+  @media(min-width:768px){
+    .bring__grid{
+      margin-top:88px;grid-template-columns:repeat(2,1fr);gap:48px 56px;border-top:0;
+    }
+  }
+  @media(min-width:1024px){.bring__grid{grid-template-columns:repeat(4,1fr);gap:48px}}
+  .bring__item{padding:24px 0}
+  @media(min-width:768px){.bring__item{padding:24px 0 0}}
+  .bring__no{font-size:12px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:.1em}
+  .bring__title{margin-top:24px;font-size:1.25rem;font-weight:600;letter-spacing:.01em}
+  @media(min-width:768px){.bring__title{font-size:1.375rem}}
+  .bring__body{margin-top:12px;font-size:14px;line-height:2;color:var(--ink-soft)}
+
+  /* ---------- Contact ---------- */
+  .contact__body{margin-top:48px;max-width:52em;font-size:16px;line-height:2.05;color:var(--ink-soft)}
+  @media(min-width:768px){.contact__body{margin-top:64px;font-size:17px}}
+  .contact__channels{margin-top:40px;display:flex;flex-wrap:wrap;align-items:baseline;gap:12px 40px}
+  @media(min-width:768px){.contact__channels{margin-top:56px;gap:16px 56px}}
+  .contact__mail{font-size:clamp(1.375rem,3vw,2rem);font-weight:500}
+  .contact__phone{font-size:clamp(1.125rem,2.4vw,1.5rem);font-weight:500;color:var(--ink-soft)}
+  .contact__foot{margin-top:56px;padding-top:24px;
+    display:flex;flex-wrap:wrap;gap:12px 40px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
+
+  /* footer 整块删除 */
+</style>
+</head>
+
+<body data-page-node-id="pV3TeVgo67XghURmrcUQ7F">
+
+<script>
+/* ==================================================================
+   ★文案区★
+   ==================================================================
+   ▼ 全站文案与图片都在这里，只改引号里的内容。
+   ▼ 结构说明：
+      headline   → 数组 → 每个元素占一行（断行）
+      paragraphs → 数组 → 每个元素是一段正文
+      bullets    → 数组 → 每个元素是一个独立的标签块
+      emphasis   → 数组 → 每个元素是一行粗体强调（视觉重点）
+      metrics    → 数字 + 标签
+      photos     → 图片文件名数组（填一个：静止；填多个：轮播）
+   ================================================================== */
+var SITE = {
+
+  /* ---------- 基本信息 ---------- */
+  name: "马淑慧",
+  nameEn: "",
+  email: "maxiaoyao1022@163.com",
+  phone: "133-8165-5791",
+  location: "Shanghai · China",
+
+  /* ==================================================================
+     ▼ 首屏
+     ================================================================== */
+  hero: {
+    eyebrow: "Portfolio",
+    headline: [
+      "从用户洞察",
+      "到产品与市场"
+    ],
+    headlineEn: "From User Insight to Product & Market",
+    sub: "4 年市场与用户研究经验，近一年聚焦 AI 产品",
+    body: "参与 AI IP 公仔从 0→1 的用户定位、产品形态、IP 人格、产品体验与上市表达，并将研究结论进一步转化为产品策划与市场决策",
+    tagline: "用户洞察 × 产品企划 × AI 产品 × PMM",
+    taglineEn: "User Insight × Product Strategy × AI Product × PMM",
+    closer: []
+  },
+
+  /* ==================================================================
+     ▼ 关于我
+     ================================================================== */
+  about: {
+    eyebrow: "About Me｜关于我",
+    heading: ["从洞察出发，", "走到产品与市场"],
+    headingEn: "From Insight to Product & Market",
+    intro: "我是马淑慧，在产品企划、市场营销与用户研究有 4 年工作经验，近一年主要参与 AI 产品相关工作",
+    note: "我的工作通常跨越三个阶段",
+    phases: [
+      {
+        no: "01",
+        title: "发现机会",
+        titleEn: "Find the Signal",
+        body: "通过用户研究、行为数据、市场与竞品分析，识别真实需求、目标人群与潜在产品机会"
+      },
+      {
+        no: "02",
+        title: "定义产品",
+        titleEn: "Define the Product",
+        body: "将研究结论转化为产品定位、使用场景、功能边界与体验方案，并参与软硬件产品从 0→1 的定义与验证"
+      },
+      {
+        no: "03",
+        title: "走向市场",
+        titleEn: "Bring It to Market",
+        body: "进一步将产品价值转化为定位、卖点、内容与上市表达，结合市场反馈持续验证"
+      }
+    ],
+    closer: "我关注的不只是研究结果本身，而是这些判断最终如何进入产品与市场决策"
+  },
+
+  /* ==================================================================
+     ▼ 案例 01
+     ================================================================== */
+  works: [
+    /* ================================================================
+       ▼ 案例 01
+       ================================================================ */
+    {
+      no: "01",
+      client: "Wander Puffs",
+      title: "从用户洞察到 AI IP 公仔 0→1",
+      subtitle: "AI Companion Product · 0→1 Definition",
+      year: "2024 — 2025",
+      category: "Product Planning · User Research",
+
+      // 卡片上显示的精简信息
+      brief: "参与一款面向家庭场景的 AI 陪伴公仔从 0→1 定义，覆盖用户定位、产品形态、IP 人格、App 体验、AI 交互与商业转化。",
+      metrics: [
+        { value: "220,000+", label: "交互数据" },
+        { value: "48%",      label: "剔除率" },
+        { value: "3",        label: "个 IP 角色" },
+        { value: "0→1",      label: "产品定义" }
+      ],
+      cardImage: {
+        slot: "",
+        caption: "",
+        hint: "",
+        ratio: "4/3",
+        photos: [
+          "images/works/AI公仔主视觉01.jpg",
+          "images/works/AI公仔主视觉02.jpg",
+          "images/works/AI公仔主视觉03.jpg"
+        ]
+      },
+
+      // 展开后的完整内容
+      intro: "一款面向家庭场景的 AI 陪伴公仔",
+      introMeta: "参与产品从 0→1 的定义，覆盖用户定位、产品形态、IP 人格、App 体验、AI 交互与商业转化",
+      lead: "项目初期，团队对目标用户的判断主要停留在「20–35 岁女性」。通过用户研究与 22 万条真实交互数据分析，我重新梳理用户、人群与使用场景，并将研究结论进一步推进到产品形态与功能定义。",
+      sections: [
+        {
+          no: "01",
+          title: "重新定义用户与场景",
+          subtitle: "User & Scenario Definition",
+          paragraphs: [
+            "从 22 万条原始交互中处理测试流量、重复会话与无效输入，最终剔除 48%，建立可用于分析的真实用户样本",
+            "分析发现，实际使用并非单一的情绪陪伴，而呈现出明显的家庭使用特征",
+            "由此推动目标人群从「20–35 岁女性」进一步聚焦至"
+          ],
+          emphasis: [
+            "晚间高频使用｜儿童语音输入｜睡前陪伴｜家庭亲子场景",
+            "母婴 / 家庭亲子用户"
+          ],
+          images: ["images/works/case1-01部分配图.jpg"]
+        },
+        {
+          no: "02",
+          title: "从用户需求到产品形态",
+          subtitle: "From Insight to Product Definition",
+          paragraphs: [
+            "基于新的用户与场景判断，参与定义 AI 公仔的核心产品形态与使用逻辑",
+            "推动用户洞察从人群判断进一步进入产品定义"
+          ],
+          bullets: [
+            "产品形态与使用场景",
+            "三角色 IP 人格与角色关系",
+            "用户与角色的互动方式",
+            "App 核心交互模块",
+            "硬件方案与模组选型评审",
+            "产品差异化功能"
+          ],
+          images: []
+        },
+        {
+          no: "03",
+          title: "从产品定义到上市表达",
+          subtitle: "Product to Market",
+          paragraphs: [
+            "围绕产品定位与用户需求，进一步参与产品定位、核心卖点、品牌表达、内容方向与上市物料",
+            "将用户洞察转化为消费者能够理解的产品价值，并参与软硬件联动验证与上市准备"
+          ],
+          bullets: [
+            "产品定位", "核心卖点", "品牌表达", "内容方向", "上市物料"
+          ],
+          images: [{ src: "images/works/case1-04部分配图.jpg", fit: "small" }]
+        },
+        {
+          no: "04",
+          title: "AI 能力如何进入产品",
+          subtitle: "AI Experience",
+          paragraphs: [
+            "在产品形态确定后，进一步参与 AI 能力与角色体验设计",
+            "让 IP 不只是视觉形象，而成为产品体验的一部分"
+          ],
+          bullets: [
+            "三角色 IP 人格与关系模型",
+            "Prompt 与知识库共建",
+            "角色行为与互动方式",
+            "内容边界与对话规则"
+          ],
+          images: []
+        }
+      ],
+      closer: "最终形成从「用户 → 场景 → 产品形态 → IP → AI 能力 → App → 市场表达」的一体化产品定义链路",
+      keyNumbers: [
+        { value: "220,000+", label: "真实交互数据" },
+        { value: "48%",      label: "原始数据剔除率" },
+        { value: "3",        label: "IP 角色模型" },
+        { value: "0→1",      label: "AI 陪伴产品定义" }
+      ]
+    },
+
+    /* ================================================================
+       ▼ 案例 02
+       ================================================================ */
+    {
+      no: "02",
+      client: "Wander Puffs / Kids Mode",
+      title: "从场景到 AI 体验：重新定义儿童模式",
+      subtitle: "AI Product Experience · Children Mode",
+      year: "2025",
+      category: "AI Product · Prompt Design · Evaluation",
+
+      brief: "从真实儿童使用场景出发，重新定义产品能力与边界，并通过 Prompt 迭代与评测体系落到具体 AI 行为。",
+      metrics: [
+        { value: "3", label: "版 Prompt 迭代" },
+        { value: "3", label: "场景 / 能力 / 约束" },
+        { value: "1", label: "可复现评测体系" },
+        { value: "3", label: "个角色模型" }
+      ],
+      cardImage: {
+        slot: "",
+        caption: "",
+        hint: "",
+        ratio: "4/3",
+        photos: [
+          "images/works/儿童模式主视觉.jpg"
+        ]
+      },
+
+      intro: "儿童模式不只是过滤成人内容，而是需要重新定义儿童场景下产品应该会什么、不应该做什么",
+      introMeta: "从真实儿童使用场景出发，重新定义产品能力与边界，再通过 Prompt 迭代与评测体系将这些要求落到具体 AI 行为",
+      lead: "",
+      sections: [
+        {
+          no: "01",
+          title: "先定义场景",
+          subtitle: "Scenario",
+          paragraphs: [
+            "从儿童真实使用场景出发，梳理睡前、独处、提问、情绪失落、日常陪伴等不同场景",
+            "不同场景对应不同的交互目标，而不是直接复用成人版逻辑"
+          ],
+          emphasis: ["睡前｜独处｜提问｜情绪失落｜日常陪伴"],
+          images: [{ src: "images/works/case2-01部分配图.jpg", fit: "small" }]
+        },
+        {
+          no: "02",
+          title: "从场景推导能力与边界",
+          subtitle: "Capability & Constraint",
+          paragraphs: [
+            "围绕每个场景进一步定义产品应该具备什么能力、如何回应、哪些内容不能出现、哪些问题不应主动追问、什么情况下需要交还给家长",
+            "最终形成「场景 → 能力 → 约束」三层产品定义框架"
+          ],
+          bullets: [
+            "产品需要具备什么能力",
+            "应该如何回应",
+            "哪些内容不能出现",
+            "哪些问题不应主动追问",
+            "什么情况下需要交还给家长"
+          ]
+        },
+        {
+          no: "03",
+          title: "通过 Prompt 迭代完成 AI 行为定义",
+          subtitle: "Prompt Iteration",
+          paragraphs: [
+            "围绕语气稳定性、内容安全性、多轮一致性进行 3 版 Prompt 迭代",
+            "每版保留对照记录：改了什么 → 为什么改 → 效果如何",
+            "使 AI 行为调整能够被复盘与持续优化"
+          ]
+        },
+        {
+          no: "04",
+          title: "建立可复现的 AI 评测体系",
+          subtitle: "AI Evaluation",
+          paragraphs: [
+            "建立固定测试集、多角色评估与统一评分维度，使不同版本能够在相同条件下进行比较",
+            "将 AI 体验从主观判断进一步转化为可观察、可复现的评价"
+          ],
+          images: []
+        }
+      ],
+      closer: "",
+      keyNumbers: [
+        { value: "3",        label: "Prompt 迭代" },
+        { value: "37.2% → 45.8%", label: "儿童用户占比" },
+        { value: "48.9%",    label: "新增用户为儿童相关" },
+        { value: "1",        label: "AI 评测体系" },
+        { value: "3",        label: "角色模型" }
+      ]
+    },
+
+    /* ================================================================
+       ▼ 案例 03
+       ================================================================ */
+    {
+      no: "03",
+      client: "Consumer Insight → PMM",
+      title: "从用户研究到上市表达",
+      subtitle: "PMM · Positioning & Go-to-Market",
+      year: "2023 — 2024",
+      category: "Market Research · Pricing · Go-to-Market",
+
+      brief: "将用户研究延伸至定位、定价、卖点、内容与上市表达，覆盖 10+ 款新品项目。",
+      metrics: [
+        { value: "366", label: "有效问卷" },
+        { value: "10+", label: "新品项目" },
+        { value: "30+", label: "SKU 详情页" },
+        { value: "100+",label: "用户产品反馈" }
+      ],
+      cardImage: {
+        slot: "",
+        caption: "",
+        hint: "",
+        ratio: "4/3",
+        photos: [
+          "images/works/新品上市主视觉01.jpg",
+          "images/works/新品上市主视觉02.jpg",
+          "images/works/新品上市主视觉03.jpg"
+        ]
+      },
+
+      intro: "研究的价值不只在于找到用户需求，也在于帮助产品做出更准确的市场决策",
+      introMeta: "在 10+ 款新品项目中，将用户研究进一步延伸至定位、定价、卖点、内容与上市表达，并结合市场反馈持续验证",
+      lead: "",
+      sections: [
+        {
+          no: "01",
+          title: "市场洞察",
+          subtitle: "Market Insight",
+          paragraphs: [
+            "通过 366 份有效问卷、用户研究与竞品分析，回答三个问题：谁在购买、为什么愿意付钱、什么价值与表达能够推动决策",
+            "同时识别价格敏感区间、核心购买动机与不同人群之间的需求差异"
+          ],
+          bullets: ["谁在购买", "为什么愿意付钱", "什么价值与表达能够推动决策"],
+          images: [{ src: "images/works/case3-01部分配图.jpg", fit: "large" }]
+        },
+        {
+          no: "02",
+          title: "产品定位",
+          subtitle: "Positioning",
+          paragraphs: [
+            "将研究结果转化为目标人群、产品定位、价值主张与价格策略",
+            "并区分：数据已经验证的结论、基于市场信息形成的判断、仍需要进一步验证的假设",
+            "让研究结果真正进入产品决策"
+          ],
+          bullets: [
+            "数据已经验证的结论",
+            "基于市场信息形成的判断",
+            "仍需要进一步验证的假设"
+          ]
+        },
+        {
+          no: "03",
+          title: "品牌与产品表达",
+          subtitle: "Messaging",
+          paragraphs: [
+            "围绕新品上市参与卖点排序、产品文案、包装表达、详情页、主视觉方向与内容方向",
+            "将用户语言、产品能力与品牌表达连接起来，让产品价值能够被消费者快速理解"
+          ],
+          bullets: ["卖点排序", "产品文案", "包装表达", "详情页", "主视觉方向", "内容方向"],
+          images: []
+        },
+        {
+          no: "04",
+          title: "上市验证",
+          subtitle: "Go-to-Market",
+          paragraphs: [
+            "覆盖 10+ 款新品从产品概念到上市物料的表达链路",
+            "其中高端产品线进一步获得市场验证",
+            "同时完成 30+ 个 SKU 详情页与 50+ 电商主图 brief"
+          ],
+          images: []
+        }
+      ],
+      closer: "",
+      keyNumbers: [
+        { value: "366", label: "有效问卷" },
+        { value: "10+", label: "新品项目" },
+        { value: "30+", label: "SKU 详情页" },
+        { value: "20+", label: "包装文案" },
+        { value: "100+",label: "用户产品反馈" }
+      ]
+    }
+  ],
+
+
+
+  /* ==================================================================
+     ▼ 工作方式
+     ================================================================== */
+  howIWork: {
+    eyebrow: "How I Work｜我的工作方式",
+    heading: ["不急着给答案，", "先把问题定义清楚"],
+    headingEn: "Define Before Solve",
+    items: [
+      {
+        no: "01",
+        title: "回到现场",
+        titleEn: "Context First",
+        body: "通过问卷、深访、行为数据、竞品与市场信息，理解真实用户、真实场景和真实替代方案，再判断问题究竟是什么",
+        detail: "问卷 / 深访 / 行为数据 / 竞品分析"
+      },
+      {
+        no: "02",
+        title: "把模糊问题变成结构",
+        titleEn: "Structure the Ambiguity",
+        body: "将分散的信息整理成团队可以直接使用的结构，让不同角色围绕同一套判断进行讨论",
+        detail: "用户画像｜场景地图｜需求优先级｜产品能力｜AI 边界"
+      },
+      {
+        no: "03",
+        title: "从判断走向验证",
+        titleEn: "Build & Validate",
+        body: "通过用户测试、Prompt 迭代、AI 评测、市场反馈与小范围验证，不断收敛产品方案",
+        detail: "一个功能、一段对话、一个产品机制或一个市场表达"
+      }
+    ]
+  },
+
+  /* ==================================================================
+     ▼ 我能带来什么
+     ================================================================== */
+  bring: {
+    eyebrow: "What I Bring｜我能带来什么",
+    heading: ["连接用户、产品与市场", "Connecting User, Product & Market"],
+    items: [
+      { title: "用户洞察",     body: "从真实行为中发现机会" },
+      { title: "产品企划",     body: "把机会转化为产品定义" },
+      { title: "AI Product",   body: "参与 AI 能力、人格与体验设计" },
+      { title: "PMM / Marketing", body: "将产品价值转化为定位、内容与市场表达" }
+    ]
+  },
+
+  /* ==================================================================
+     ▼ 联系我
+     ================================================================== */
+  contact: {
+    eyebrow: "Contact｜联系我",
+    heading: ["把洞察变成行动", "From Insight to Action"],
+    body: "如果你的团队正在定义一个新产品、寻找新的用户机会，或需要把复杂的产品价值转化成清晰的市场表达，欢迎交流",
+    tags: "AI Product / Product Strategy / PMM / User Insight"
+  }
+};
+/* ==================================================================
+   ★文案区结束★
+   ================================================================== */
+</script>
+
+<script>
+(function () {
+  "use strict";
+
+  function esc(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+  function d(ms) { return ' style="--d:' + ms + 'ms"'; }
+
+  var RATIO_CLASS = { "16/9": "frame-16x9", "3/2": "frame-3x2", "4/3": "frame-4x3", "1/1": "frame-1x1" };
+  var RATIO_LABEL = { "16/9": "16 : 9", "3/2": "3 : 2", "4/3": "4 : 3", "1/1": "1 : 1" };
+  var RATIO_SIZE  = { "16/9": "2400 × 1350", "3/2": "1800 × 1200", "4/3": "1600 × 1200", "1/1": "1600 × 1600" };
+
+  /* ---------- 单张图 / 占位块 ---------- */
+  function slideHTML(ratio, src, alt, slotNo, hint, total, idx) {
+    var inner;
+    if (src) {
+      inner = '<img src="' + esc(src) + '" alt="' + esc(alt || "") + '" draggable="false" loading="lazy" data-fallback="1">';
+    } else {
+      inner =
+        '<div class="ph">' +
+          '<span class="ph__inner"></span>' +
+          '<span class="ph__body">' +
+            '<span class="ph__slot">' + esc(slotNo) + (total > 1 ? " · " + (idx + 1) + "/" + total : "") + '</span>' +
+            '<span class="ph__hint">' + esc(hint) + '</span>' +
+            '<span class="ph__meta">' + esc(RATIO_LABEL[ratio]) + " · " + esc(RATIO_SIZE[ratio]) + '</span>' +
+          '</span>' +
+        '</div>';
+    }
+    return '<div class="roll__item"><div class="frame ' + esc(RATIO_CLASS[ratio]) + '">' + inner + '</div></div>';
+  }
+
+  /* ---------- 轮播 / 单图 ---------- */
+  function rollerHTML(slot) {
+    var ratio = slot.ratio || "16/9";
+    var photos = slot.photos || [];
+    var list = photos.length ? photos : [null, null, null];
+    var slides = list.map(function (p, i) {
+      var src = typeof p === "string" ? p : (p && p.src);
+      return slideHTML(ratio, src, slot.caption, slot.slot, slot.hint || "此处放置图片", list.length, i);
+    }).join("");
+
+    var nav = photos.length > 1
+      ? '<span class="roll__nav">' +
+          '<button class="roll__btn" type="button" data-dir="-1" aria-label="上一张">&#8592;</button>' +
+          '<span class="roll__count">01 / ' + (photos.length < 10 ? "0" : "") + photos.length + '</span>' +
+          '<button class="roll__btn" type="button" data-dir="1" aria-label="下一张">&#8594;</button>' +
+        '</span>' : "";
+
+    var tip = photos.length ? "" :
+      '<div class="roll__hint">还没有放图片 · 在上方「文案区」的 photos: [] 里填文件名即可；填 2 张以上这里会变成可滚动的轮播</div>';
+
+    return '<figure class="roll' + (photos.length > 1 ? "" : " roll--single") + '">' +
+      '<div class="roll__viewport"><div class="roll__track">' + slides + '</div></div>' +
+      '<figcaption class="roll__caption">' +
+        '<span class="cap-no">' + esc(slot.slot) + '</span>' +
+        '<span class="cap-text">' + esc(slot.caption) + '</span>' +
+        nav +
+      '</figcaption>' + tip +
+    '</figure>';
+  }
+
+  /* ---------- 顶部 ---------- */
+  function headerHTML() {
+    return '<header class="site-header" id="siteHeader"><div class="shell site-header__inner">' +
+      '<a href="#top" class="brand">' +
+        '<span class="brand__name">' + esc(SITE.name) + '</span>' +
+        '<span class="brand__role">用户洞察 × 产品企划 × AI 产品 × PMM</span>' +
+      '</a>' +
+      '<nav class="nav" aria-label="主导航">' +
+        '<a href="#about">About</a>' +
+        '<a href="#works">Works</a>' +
+        '<a href="#how">How</a>' +
+        '<a href="#bring">Bring</a>' +
+        '<a href="#contact" class="nav__contact">Contact</a>' +
+      '</nav>' +
+    '</div></header>';
+  }
+
+  /* ---------- 首屏 ---------- */
+  function heroHTML() {
+    var h = SITE.hero;
+    var titleLines = h.headline.map(function (l, i) {
+      return '<span class="enter"' + d(120 + i * 180) + '>' + esc(l) + '</span>';
+    }).join("");
+
+    return '<section class="hero-stage" id="top">' +
+        '<canvas id="heroWaves" aria-hidden="true"></canvas>' +
+        '<div class="shell"><div class="hero-frame">' +
+          '<div class="hero-top">' +
+            '<p class="hero__eyebrow enter"' + d(60) + '>' + esc(h.eyebrow) + '</p>' +
+            '<p class="hero__sub enter"' + d(300) + '>' + esc(h.sub) + '</p>' +
+          '</div>' +
+          '<div class="hero-mid">' +
+            '<h1 class="hero__title">' + titleLines + '</h1>' +
+            '<p class="hero__subEn enter"' + d(540) + '>' + esc(h.headlineEn) + '</p>' +
+            '<p class="hero__body enter"' + d(680) + '>' + esc(h.body) + '</p>' +
+          '</div>' +
+        '</div></div>' +
+      '</section>';
+  }
+
+  /* ---------- About ---------- */
+  function aboutHTML() {
+    var a = SITE.about;
+    var titleLines = a.heading.map(function (l, i) {
+      return '<span class="reveal"' + d(120 + i * 160) + '>' + esc(l) + '</span>';
+    }).join("");
+    var phaseItems = a.phases.map(function (p, i) {
+      return '<div class="about__phase reveal"' + d(i * 180) + '>' +
+        '<div class="about__phase-no">' + esc(p.no) + '.</div>' +
+        '<h3 class="about__phase-title">' + esc(p.title) + '</h3>' +
+        '<p class="about__phase-en">' + esc(p.titleEn) + '</p>' +
+        '<p class="about__phase-body">' + esc(p.body) + '</p>' +
+      '</div>';
+    }).join("");
+
+    return '<section id="about" class="shell">' +
+      '<div class="sec-head">' +
+        '<p class="sec-head__eyebrow reveal"><span class="sec-head__label">' + esc(a.eyebrow) + '</span></p>' +
+        '<div class="sec-head__row">' +
+          '<h2 class="sec-head__title">' + titleLines + '</h2>' +
+          '<p class="sec-head__aside reveal"' + d(420) + '>' + esc(a.headingEn) + '</p>' +
+        '</div>' +
+      '</div>' +
+      '<p class="about__intro reveal">' + esc(a.intro) + '</p>' +
+      '<p class="about__note reveal"' + d(120) + '>' + esc(a.note) + '</p>' +
+      '<div class="about__phases">' + phaseItems + '</div>' +
+      '<p class="about__closer reveal">' + esc(a.closer) + '</p>' +
+    '</section>';
+  }
+
+  /* ---------- 案例：横向卡片（默认折叠） ---------- */
+  function caseCardHTML(w, i) {
+    /* ===== 卡片默认状态：编号 + 标题 + 一句话描述 + 关键数据 + 一张图 + 查看详情 ===== */
+    var stats = (w.metrics || []).map(function (m) {
+      return '<li><span class="case-card__metric-v">' + esc(m.value) + '</span>' +
+             '<span class="case-card__metric-l">' + esc(m.label) + '</span></li>';
+    }).join("");
+
+    var summary =
+      '<summary class="case-card__head">' +
+        '<div class="case-card__main">' +
+          '<span class="case-card__no">' + esc(w.no) + '.</span>' +
+          '<h3 class="case-card__title">' + esc(w.title) + '</h3>' +
+          '<p class="case-card__subtitle">' + esc(w.subtitle) + '</p>' +
+          '<p class="case-card__brief">' + esc(w.brief) + '</p>' +
+          '<ul class="case-card__stats">' + stats + '</ul>' +
+          '<span class="case-card__cue">查看详情 <span class="case-card__cue-arrow">&#8594;</span></span>' +
+        '</div>' +
+        '<div class="case-card__thumb">' +
+          (w.cardImage ? rollerHTML(w.cardImage) : '') +
+        '</div>' +
+      '</summary>';
+
+    /* ===== 点击后展开的完整详细内容 ===== */
+    var body =
+      '<div class="case-card__body">' +
+        '<div class="case-card__intro">' + esc(w.intro) + '</div>' +
+        (w.introMeta ? '<p class="case-card__introMeta">' + esc(w.introMeta) + '</p>' : '') +
+        (w.lead ? '<p class="case-card__lead">' + esc(w.lead) + '</p>' : '') +
+        sectionsHTML(w.sections) +
+        closerHTML(w.closer) +
+        keyNumbersHTML(w.keyNumbers) +
+      '</div>';
+
+    return '<details class="case-card reveal"' + d(i * 120) + '>' + summary + body + '</details>';
+  }
+
+  function sectionsHTML(sections) {
+    return sections.map(function (s, i) {
+      var body = (s.paragraphs || []).map(function (p) { return '<p>' + esc(p) + '</p>'; }).join("");
+      var bullets = (s.bullets || []).length
+        ? '<ul class="sub__bullets">' + s.bullets.map(function (b) { return '<li>' + esc(b) + '</li>'; }).join("") + '</ul>'
+        : "";
+      var emphasis = (s.emphasis || []).length
+        ? '<div class="sub__emphasis">' + s.emphasis.map(function (e) { return '<p>' + esc(e) + '</p>'; }).join("") + '</div>'
+        : "";
+      var hasImg = !!(s.images && s.images.length);
+      var imgs = hasImg
+        ? '<div class="sub__fig">' + s.images.map(function (item) {
+            // 兼容字符串或 { src, fit } 两种形式
+            var src = typeof item === "string" ? item : item.src;
+            var fit = (item && typeof item === "object" && item.fit) ? String(item.fit) : "";
+            var cls = fit ? ' class="img-fit-' + esc(fit) + '"' : "";
+            return '<img src="' + esc(src) + '" alt="" loading="lazy" decoding="async"' + cls + '>';
+          }).join("") + '</div>'
+        : "";
+      return '<div class="sub reveal"' + d(i * 100) + '>' +
+        '<div class="sub__head">' +
+          '<span class="sub__no">' + esc(s.no) + '｜</span>' +
+          '<h4 class="sub__title">' + esc(s.title) + '</h4>' +
+          '<span class="sub__subEn">' + esc(s.subtitle) + '</span>' +
+        '</div>' +
+        '<div class="sub__body' + (hasImg ? ' sub__body--with-img' : '') + '">' +
+          '<div class="sub__text">' + body + bullets + emphasis + '</div>' +
+          imgs +
+        '</div>' +
+      '</div>';
+    }).join("");
+  }
+
+  function closerHTML(c) {
+    return c ? '<p class="case-card__closer reveal">' + esc(c) + '</p>' : "";
+  }
+
+  function keyNumbersHTML(m) {
+    if (!m || !m.length) return "";
+    return '<div class="key-numbers">' +
+      '<p class="key-numbers__title reveal">Key Numbers｜关键数据</p>' +
+      '<div class="key-numbers__grid">' +
+      m.map(function (x, i) {
+        return '<div class="key-numbers__item reveal"' + d(i * 80) + '>' +
+          '<div class="key-numbers__v">' + esc(x.value) + '</div>' +
+          '<div class="key-numbers__l">' + esc(x.label) + '</div>' +
+        '</div>';
+      }).join("") +
+      '</div></div>';
+  }
+
+  function worksHTML() {
+    var items = SITE.works.map(function (w, i) { return caseCardHTML(w, i); }).join("");
+    return '<section id="works" style="padding-bottom:0">' +
+      '<div class="shell">' +
+        '<div class="sec-head">' +
+          '<p class="sec-head__eyebrow reveal"><span class="sec-head__label">Selected Work｜项目精选</span></p>' +
+          '<div class="sec-head__row">' +
+            '<h2 class="sec-head__title">' +
+              '<span class="reveal"' + d(120) + '>三个案例</span>' +
+              '<span class="reveal"' + d(280) + '>从洞察一路走到产品里</span>' +
+            '</h2>' +
+          '</div>' +
+        '</div>' +
+        '<div class="works-list" style="margin-top:72px">' + items + '</div>' +
+      '</div>' +
+    '</section>';
+  }
+
+  /* ---------- How I Work ---------- */
+  function howHTML() {
+    var h = SITE.howIWork;
+    var titleLines = h.heading.map(function (l, i) {
+      return '<span class="reveal"' + d(120 + i * 160) + '>' + esc(l) + '</span>';
+    }).join("");
+    var items = h.items.map(function (it, i) {
+      return '<div class="how__item reveal"' + d(i * 180) + '>' +
+        '<div class="how__top"><span class="how__no">' + esc(it.no) + '.</span><span class="how__en">' + esc(it.titleEn) + '</span></div>' +
+        '<h3 class="how__title">' + esc(it.title) + '</h3>' +
+        '<p class="how__body">' + esc(it.body) + '</p>' +
+        '<p class="how__detail">' + esc(it.detail) + '</p>' +
+      '</div>';
+    }).join("");
+    return '<section id="how" class="shell">' +
+      '<div class="sec-head">' +
+        '<p class="sec-head__eyebrow reveal"><span class="sec-head__label">' + esc(h.eyebrow) + '</span></p>' +
+        '<div class="sec-head__row">' +
+          '<h2 class="sec-head__title">' + titleLines + '</h2>' +
+          '<p class="sec-head__aside reveal"' + d(420) + '>' + esc(h.headingEn) + '</p>' +
+        '</div>' +
+      '</div>' +
+      '<div class="how__grid">' + items + '</div>' +
+    '</section>';
+  }
+
+  /* ---------- What I Bring ---------- */
+  function bringHTML() {
+    var b = SITE.bring;
+    var titleLines = b.heading.map(function (l, i) {
+      return '<span class="reveal"' + d(120 + i * 160) + '>' + esc(l) + '</span>';
+    }).join("");
+    var items = b.items.map(function (it, i) {
+      return '<div class="bring__item reveal"' + d(i * 120) + '>' +
+        '<span class="bring__no">0' + (i + 1) + '.</span>' +
+        '<h3 class="bring__title">' + esc(it.title) + '</h3>' +
+        '<p class="bring__body">' + esc(it.body) + '</p>' +
+      '</div>';
+    }).join("");
+    return '<section id="bring" class="shell">' +
+      '<div class="sec-head">' +
+        '<p class="sec-head__eyebrow reveal"><span class="sec-head__label">' + esc(b.eyebrow) + '</span></p>' +
+        '<div class="sec-head__row">' +
+          '<h2 class="sec-head__title">' + titleLines + '</h2>' +
+        '</div>' +
+      '</div>' +
+      '<div class="bring__grid">' + items + '</div>' +
+    '</section>';
+  }
+
+  /* ---------- Contact ---------- */
+  function contactHTML() {
+    var c = SITE.contact;
+    var titleLines = c.heading.map(function (l, i) {
+      return '<span class="reveal"' + d(120 + i * 160) + '>' + esc(l) + '</span>';
+    }).join("");
+    return '<section id="contact" class="shell contact">' +
+      '<div class="sec-head">' +
+        '<p class="sec-head__eyebrow reveal"><span class="sec-head__label">' + esc(c.eyebrow) + '</span></p>' +
+        '<div class="sec-head__row"><h2 class="sec-head__title">' + titleLines + '</h2></div>' +
+      '</div>' +
+      '<p class="contact__body reveal">' + esc(c.body) + '</p>' +
+      '<div class="contact__channels reveal"' + d(180) + '>' +
+        '<a href="mailto:' + esc(SITE.email) + '" class="contact__mail link-calm">' + esc(SITE.email) + '</a>' +
+        '<a href="tel:' + esc(SITE.phone) + '" class="contact__phone link-calm">' + esc(SITE.phone) + '</a>' +
+      '</div>' +
+      '<div class="contact__foot reveal"' + d(320) + '>' +
+        '<span>' + esc(SITE.name) + '</span>' +
+        '<span>' + esc(SITE.location) + '</span>' +
+        '<span>' + esc(c.tags) + '</span>' +
+      '</div>' +
+    '</section>';
+  }
+
+  /* ---------- 渲染 ---------- */
+  document.title = SITE.name + " — 用户洞察 × 产品企划 × AI 产品 × PMM";
+  document.body.innerHTML =
+    headerHTML() +
+    "<main>" + heroHTML() + aboutHTML() + worksHTML() + howHTML() + bringHTML() + contactHTML() + "</main>";
+
+  /* ---------- 图片加载失败 → 回退占位 ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll("img[data-fallback]"), function (img) {
+    img.addEventListener("error", function () {
+      var frame = img.parentNode;
+      if (!frame) return;
+      frame.innerHTML =
+        '<div class="ph"><span class="ph__inner"></span><span class="ph__body">' +
+        '<span class="ph__hint">图片没能加载：' + esc(img.getAttribute("src")) + '</span>' +
+        '<span class="ph__meta">请检查文件名和路径</span></span></div>';
+    });
+    if (img.complete && img.naturalWidth === 0) img.dispatchEvent(new Event("error"));
+  });
+
+  /* ---------- 轮播：循环翻页 + 计数 + 拖拽 + 自动播放 ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll(".roll__viewport"), function (vp) {
+    var track = vp.querySelector(".roll__track");
+    var countEl = vp.parentNode.querySelector(".roll__count");
+    var prevBtn = vp.parentNode.querySelector('[data-dir="-1"]');
+    var nextBtn = vp.parentNode.querySelector('[data-dir="1"]');
+    var items = track ? Array.prototype.slice.call(track.children) : [];
+    if (!items.length) return;
+
+    // 用相对视口的位置计算，避免 offsetLeft（相对定位祖先）与 scrollLeft 坐标系不一致
+    function itemLeft(it) {
+      return it.getBoundingClientRect().left - vp.getBoundingClientRect().left + vp.scrollLeft;
+    }
+    function currentIndex() {
+      var best = 0, bestD = Infinity;
+      items.forEach(function (it, i) {
+        var dd = Math.abs(itemLeft(it) - vp.scrollLeft);
+        if (dd < bestD) { bestD = dd; best = i; }
+      });
+      return best;
+    }
+    function sync() {
+      var i = currentIndex();
+      if (countEl) {
+        var n = String(i + 1); if (n.length < 2) n = "0" + n;
+        var t = String(items.length); if (t.length < 2) t = "0" + t;
+        countEl.textContent = n + " / " + t;
+      }
+      // 循环：永远不禁用按钮
+    }
+    // 循环滚动：最后一张 → 第一张；第一张 ← 最后一张
+    function go(dir) {
+      if (!items.length) return;
+      var i = (currentIndex() + dir + items.length) % items.length;
+      if (items[i]) vp.scrollTo({ left: itemLeft(items[i]), behavior: "smooth" });
+    }
+    if (prevBtn) prevBtn.addEventListener("click", function () { go(-1); userPause(); });
+    if (nextBtn) nextBtn.addEventListener("click", function () { go(1); userPause(); });
+    vp.addEventListener("scroll", sync, { passive: true });
+
+    var down = false, startX = 0, startScroll = 0, moved = 0, pid = null;
+    vp.addEventListener("pointerdown", function (e) {
+      userPause();
+      // 触摸 / 触控笔交给浏览器原生滚动（overflow-x + scroll-snap 已自带惯性吸附）
+      // 只有鼠标才走下面的自定义拖拽，避免和原生滚动打架
+      if (e.pointerType && e.pointerType !== "mouse") return;
+      if (e.button != null && e.button !== 0) return;
+      down = true; moved = 0; startX = e.clientX; startScroll = vp.scrollLeft; pid = e.pointerId;
+      // 捕获指针：拖到视口外仍持续收到 pointermove，不会中途断掉
+      try { vp.setPointerCapture(pid); } catch (err) {}
+    });
+    vp.addEventListener("pointermove", function (e) {
+      if (!down) return;
+      var dx = e.clientX - startX;
+      if (Math.abs(dx) > 4) { vp.classList.add("is-dragging"); moved = Math.abs(dx); }
+      vp.scrollLeft = startScroll - dx;
+      e.preventDefault();
+    });
+    function endDrag() {
+      if (!down) return;
+      down = false;
+      if (pid != null) { try { vp.releasePointerCapture(pid); } catch (err) {} pid = null; }
+      vp.classList.remove("is-dragging");
+      var snap = items[currentIndex()];
+      if (moved > 4 && snap) vp.scrollTo({ left: itemLeft(snap), behavior: "smooth" });
+    }
+    vp.addEventListener("pointerup", endDrag);
+    vp.addEventListener("pointercancel", endDrag);
+    document.addEventListener("pointerup", endDrag);   // 兜底：指针在视口外抬起
+
+    var rollEl = vp.closest(".roll");
+    if (rollEl) {
+      // 图区整体不触发 case 展开/收起（它在 <summary> 内部，默认点击会误触）
+      // 冒泡阶段拦下：先让按钮自己的 handler 跑完，再 preventDefault 取消 summary 的默认行为
+      rollEl.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      });
+    }
+
+    sync();
+    window.addEventListener("resize", sync);
+
+    /* ---------- 自动循环轮播 ----------
+       规则：
+       - AUTO_MS（4s）自动切下一张
+       - 用户点按钮/拖动后暂停 PAUSE_MS（6s）再继续
+       - case 卡片展开（details.open）时停
+       - 滚出视口时停
+       - prefers-reduced-motion 不播
+    */
+    var prefersReduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    var AUTO_MS = 4000;
+    var PAUSE_MS = 6000;
+    var autoT = null, userPauseUntil = 0;
+
+    function startAuto() {
+      if (prefersReduce || autoT) return;
+      autoT = setInterval(function () {
+        if (Date.now() < userPauseUntil) return;
+        var card = vp.closest('details');
+        if (card && card.open) return;
+        go(1);
+      }, AUTO_MS);
+    }
+    function stopAuto() {
+      if (autoT) { clearInterval(autoT); autoT = null; }
+    }
+    function userPause() {
+      userPauseUntil = Date.now() + PAUSE_MS;
+    }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) startAuto(); else stopAuto();
+      }, { threshold: 0.3 }).observe(vp);
+    } else {
+      startAuto();
+    }
+    // case 卡片展开/收起时切换
+    var cardEl = vp.closest('details');
+    if (cardEl) cardEl.addEventListener('toggle', function () {
+      if (cardEl.open) stopAuto(); else startAuto();
+    });
+  });
+
+  /* ---------- 顶栏：滚动后浮出发丝线 ---------- */
+  (function () {
+    var header = document.getElementById("siteHeader");
+    function onScroll() { header.classList.toggle("is-lifted", window.scrollY > 8); }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  })();
+
+  /* ---------- 滚动渐显 ---------- */
+  (function () {
+    var items = document.querySelectorAll(".reveal");
+    if (!("IntersectionObserver" in window)) {
+      Array.prototype.forEach.call(items, function (el) { el.classList.add("is-in"); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add("is-in"); io.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    Array.prototype.forEach.call(items, function (el) { io.observe(el); });
+  })();
+})();
+</script>
+
+<script>
+/* ==================================================================
+   首屏流动波纹 —— 复刻 mud.co.jp
+   ================================================================== */
+(function () {
+  var c = document.getElementById('heroWaves');
+  if (!c) return;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ctx = c.getContext('2d');
+  var W = 0, H = 0, dpr = 1;
+  var time = 0, lastFrame = performance.now(), cycleT = 0, yawAcc = 0;
+  var rings = [];
+  var resizeT;
+
+  var CFG = {
+    ringCount: 18, segments: 72, fov: 45,
+    framing: 1.35, lineWidth: 0.9, alpha: 0.5,
+    lifeBase: 11, hold: 13, fade: 6
+  };
+  var INK = '44,44,44';   // #2C2C2C，与全站主色一致
+
+  var SCENES = [
+    { projection:'ortho', shapeSphere:0, hornPower:2,    cameraPitch:0,    cameraYaw:0,   cameraDist:3.33, targetX:0,   targetY:0,   noiseAmp:.092, noiseFreq:1.48, octaves:.7,  spin:.16,  flow:.21, fadeIn:.24, fadeOut:.90,  ampFalloff:2 },
+    { projection:'ortho', shapeSphere:0, hornPower:2,    cameraPitch:0,    cameraYaw:0,   cameraDist:1.10, targetX:.5,  targetY:.4,  noiseAmp:.136, noiseFreq:3.64, octaves:1.3, spin:.07,  flow:.27, fadeIn:.14, fadeOut:.875, ampFalloff:1.5 },
+    { projection:'persp', shapeSphere:1, hornPower:0,    cameraPitch:0,    cameraYaw:-48, cameraDist:3.95, targetX:.4,  targetY:.4,  noiseAmp:.03,  noiseFreq:1.62, octaves:1.5, spin:.15,  flow:.01, fadeIn:.17, fadeOut:.525, ampFalloff:0 },
+    { projection:'ortho', shapeSphere:0, hornPower:1.78, cameraPitch:37.6, cameraYaw:0,   cameraDist:2.71, targetX:0,   targetY:0,   noiseAmp:0,    noiseFreq:.20,  octaves:.5,  spin:.115, flow:.21, fadeIn:.10, fadeOut:.895, ampFalloff:0 },
+    { projection:'persp', shapeSphere:0, hornPower:.15,  cameraPitch:89,   cameraYaw:3,   cameraDist:2.85, targetX:0,   targetY:0,   noiseAmp:.018, noiseFreq:4.5,  octaves:1.7, spin:.075, flow:.21, fadeIn:.15, fadeOut:.71,  ampFalloff:0 },
+    { projection:'persp', shapeSphere:0, hornPower:.16,  cameraPitch:0,    cameraYaw:0,   cameraDist:3.32, targetX:0,   targetY:0,   noiseAmp:.05,  noiseFreq:3.06, octaves:1.65,spin:0,    flow:.21, fadeIn:.13, fadeOut:.71,  ampFalloff:0 }
+  ];
+
+  function fract(x){ return x - Math.floor(x); }
+  function clamp01(x){ return x < 0 ? 0 : x > 1 ? 1 : x; }
+  function hash21(x, y){
+    var px = fract(x*234.34), py = fract(y*435.345);
+    var d = px*(px+34.23) + py*(py+34.23);
+    px += d; py += d;
+    return fract(px*py);
+  }
+  function vnoise(x, y){
+    var ix = Math.floor(x), iy = Math.floor(y);
+    var fx = x-ix, fy = y-iy;
+    var a = hash21(ix,iy), b = hash21(ix+1,iy), cc = hash21(ix,iy+1), dd = hash21(ix+1,iy+1);
+    var ux = fx*fx*(3-2*fx), uy = fy*fy*(3-2*fy);
+    return (a+(b-a)*ux) + (cc-a)*uy*(1-ux) + (dd-b)*ux*uy;
+  }
+  function fbm(x, y, oct){
+    var v=0, amp=0.5, fq=1, tot=0, rem = clamp01(oct)*5;
+    for (var i=0;i<5;i++){
+      var w = clamp01(rem);
+      v += w*amp*vnoise(x*fq, y*fq);
+      tot += w*amp;
+      rem -= 1; amp *= 0.55; fq *= 2.05;
+    }
+    return tot > 1e-4 ? v/tot : 0;
+  }
+  function smoothstep(e0, e1, x){
+    if (e1 <= e0) return x < e0 ? 0 : 1;
+    var t = clamp01((x-e0)/(e1-e0));
+    return t*t*(3-2*t);
+  }
+
+  function buildRings(){
+    rings = [];
+    for (var i=0;i<CFG.ringCount;i++){
+      var r1 = Math.random(), r2 = Math.random();
+      rings.push({
+        phase: i / CFG.ringCount,
+        vel: (1/CFG.lifeBase) * (0.78 + r1*0.5),
+        spin: -1.4 + 1.2*r2,
+        seed: (i+1)/CFG.ringCount,
+        ang: Math.random()*Math.PI*2
+      });
+    }
+  }
+
+  function lerpScene(a, b, t){
+    var o = { projection: t < 0.5 ? a.projection : b.projection };
+    for (var k in a) if (typeof a[k] === 'number') o[k] = a[k] + (b[k]-a[k])*t;
+    return o;
+  }
+  function currentScene(){
+    var total = CFG.hold + CFG.fade;
+    var idx = Math.floor(cycleT / total);
+    var from = ((idx % SCENES.length) + SCENES.length) % SCENES.length;
+    var to = (from + 1) % SCENES.length;
+    var pos = cycleT - idx*total;
+    var t = pos <= CFG.hold ? 0 : (pos - CFG.hold)/CFG.fade;
+    return lerpScene(SCENES[from], SCENES[to], t*t*(3-2*t));
+  }
+
+  function setup(){
+    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    var rect = c.getBoundingClientRect();
+    W = rect.width; H = rect.height;
+    c.width = Math.floor(W*dpr);
+    c.height = Math.floor(H*dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function ringPos(lat, ang, s, ring, out){
+    var theta = lat*Math.PI;
+    var hornR = Math.pow(Math.max(lat,0), s.hornPower), hornY = 1 - lat*2;
+    var sphR = Math.sin(theta), sphY = Math.cos(theta);
+    var r = hornR + (sphR-hornR)*s.shapeSphere;
+    var y = hornY + (sphY-hornY)*s.shapeSphere;
+    var px = Math.cos(ang)*r, py = y, pz = Math.sin(ang)*r;
+
+    var st = Math.sin(theta), ct = Math.cos(theta);
+    var snx = st*Math.cos(ang), sny = ct, snz = st*Math.sin(ang);
+    var n2x = 0.894427, n2y = 0.447214;
+    var cnx = Math.cos(ang)*n2x, cny = n2y, cnz = Math.sin(ang)*n2x;
+    var nx = cnx + (snx-cnx)*s.shapeSphere;
+    var ny = cny + (sny-cny)*s.shapeSphere;
+    var nz = cnz + (snz-cnz)*s.shapeSphere;
+    var nl = Math.sqrt(nx*nx+ny*ny+nz*nz) || 1;
+    nx/=nl; ny/=nl; nz/=nl;
+
+    var rs = ring.seed*47;
+    var ox = Math.cos(rs)*50;
+    var oy = Math.sin(rs*1.3)*50 + time*(0.6 + s.flow*1.6);
+    var n = fbm(ox + Math.cos(ang)*s.noiseFreq, oy + Math.sin(ang)*s.noiseFreq, s.octaves) - 0.5;
+    var k = n*2*s.noiseAmp*Math.pow(clamp01(lat), Math.max(s.ampFalloff,0));
+    out[0] = px + nx*k; out[1] = py + ny*k; out[2] = pz + nz*k;
+    return out;
+  }
+
+  var P = [0,0,0];
+
+  function drawRing(ring, s, yaw){
+    var lat = fract(time*ring.vel*(0.7 + s.flow*1.6) + ring.phase);
+    var fin = Math.max(0.001, s.fadeIn), fout = Math.min(0.999, s.fadeOut);
+    var op = Math.min(
+      smoothstep(Math.max(0, fin-0.08), fin, lat),
+      1 - smoothstep(fout, Math.min(1, fout+0.08), lat)
+    ) * CFG.alpha;
+    if (op <= 0.004) return;
+
+    var pitch = s.cameraPitch*Math.PI/180;
+    var cp = Math.cos(pitch), sp = Math.sin(pitch);
+    var cyw = Math.cos(yaw), syw = Math.sin(yaw);
+    var d = Math.max(1.5, s.cameraDist);
+    var focal = (H*0.5)/Math.tan(CFG.fov*Math.PI/360)*CFG.framing;
+    var ortho = s.projection === 'ortho';
+    var scale = focal / (ortho ? d : 1);
+    var cx = W*0.44, cy = H*0.5;
+    var SEG = CFG.segments;
+
+    ctx.strokeStyle = 'rgba(' + INK + ',' + op.toFixed(3) + ')';
+    ctx.lineWidth = CFG.lineWidth;
+    ctx.beginPath();
+    for (var i=0;i<=SEG;i++){
+      var ang = ring.ang + (i/SEG)*Math.PI*2;
+      ringPos(lat, ang, s, ring, P);
+      var x1 = P[0]*cyw + P[2]*syw;
+      var z1 = -P[0]*syw + P[2]*cyw;
+      var up = z1*cp + P[1]*sp;
+      var dep = P[1]*cp - z1*sp;
+      var denom = ortho ? 1 : Math.max(0.15, d - dep);
+      var sx = cx + (x1 - s.targetX)*scale/denom;
+      var sy = cy - (up - s.targetY)*scale/denom;
+      if (i===0) ctx.moveTo(sx,sy); else ctx.lineTo(sx,sy);
+    }
+    ctx.closePath();
+    ctx.stroke();
+  }
+
+  function render(dt){
+    ctx.clearRect(0,0,W,H);
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+    var s = currentScene();
+    yawAcc += dt * s.spin * 0.4;
+    var yaw = s.cameraYaw*Math.PI/180 + yawAcc;
+    for (var i=0;i<rings.length;i++){
+      rings[i].ang += rings[i].spin * s.spin * (dt || 0.016);
+      drawRing(rings[i], s, yaw);
+    }
+  }
+
+  /* 离屏暂停：Hero 滚出视口后停止渲染，避免白白占用主线程 */
+  var onScreen = true;
+  if (typeof IntersectionObserver === 'function' && c) {
+    new IntersectionObserver(function (entries) {
+      var was = onScreen;
+      onScreen = entries[0].isIntersecting;
+      if (onScreen && !was) lastFrame = performance.now();
+    }, { threshold: 0 }).observe(c);
+  }
+
+  function tick(now){
+    requestAnimationFrame(tick);
+    if (!onScreen) return;
+    var dt = Math.min(0.05, (now - lastFrame)/1000);
+    lastFrame = now;
+    if (!reduce){ time += dt; cycleT += dt; render(dt); }
+  }
+
+  setup();
+  buildRings();
+  if (reduce) render(0);
+  requestAnimationFrame(tick);
+
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeT);
+    resizeT = setTimeout(function(){ setup(); if (reduce) render(0); }, 150);
+  });
+})();
+</script>
+
+</body>
+</html>
