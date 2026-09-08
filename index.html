@@ -96,18 +96,20 @@
     backdrop-filter:saturate(140%) blur(14px);
     -webkit-backdrop-filter:saturate(140%) blur(14px);
   }
-  .site-header__inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .site-header__inner{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
   @media(min-width:768px){.site-header__inner{height:72px}}
-  .brand{display:flex;align-items:baseline;gap:14px}
-  .brand__name{font-size:15px;font-weight:800;letter-spacing:.04em}
-  .brand__role{display:none;font-size:11px;letter-spacing:.12em;color:var(--ink-faint);font-weight:500}
+  .brand{display:flex;align-items:baseline;gap:14px;flex-shrink:0;min-width:0;white-space:nowrap}
+  .brand__name{font-size:14px;font-weight:800;letter-spacing:.04em}
+  @media(min-width:768px){.brand__name{font-size:15px}}
+  .brand__role{display:none;font-size:11px;letter-spacing:.12em;color:var(--ink-faint);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   @media(min-width:768px){.brand__role{display:inline}}
-  .nav{display:flex;align-items:center;gap:22px}
-  @media(min-width:768px){.nav{gap:34px}}
-  .nav a{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;transition:opacity .4s var(--ease)}
-  @media(min-width:768px){.nav a{font-size:12px}}
+  .nav{display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:flex-end}
+  @media(min-width:768px){.nav{gap:34px;flex-wrap:nowrap}}
+  .nav a{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;transition:opacity .4s var(--ease);white-space:nowrap}
+  @media(min-width:768px){.nav a{font-size:12px;letter-spacing:.14em}}
   .nav a:hover{opacity:.5}
-  .nav a.nav__contact::after{content:"•";margin-left:16px}
+  .nav a.nav__contact::after{content:"";margin-left:0}
+  @media(min-width:768px){.nav a.nav__contact::after{content:"•";margin-left:16px}}
 
   /* ---------- 渐显 ---------- */
   .reveal{opacity:0;transform:translate3d(0,14px,0);
@@ -127,9 +129,9 @@
     position:relative;overflow:hidden;background:var(--paper);
     min-height:calc(100svh - 64px);
     display:flex;align-items:stretch;
-    padding:56px 0 40px;
+    padding:72px 0 56px;
   }
-  @media(min-width:768px){.hero-stage{min-height:calc(100svh - 76px);padding:72px 0 56px}}
+  @media(min-width:768px){.hero-stage{min-height:calc(100svh - 76px);padding:96px 0 72px}}
   /* 波纹画布：铺满整个首屏，通栏无边距 */
   .hero-stage > canvas{
     position:absolute;inset:0;width:100%;height:100%;
@@ -139,17 +141,24 @@
   .hero-stage > .shell{position:relative;z-index:2;display:flex;width:100%}
   .hero-frame{
     position:relative;width:100%;
-    display:flex;flex-direction:column;justify-content:space-between;gap:64px;
+    display:flex;flex-direction:column;justify-content:space-between;gap:40px;
   }
   @media(min-width:768px){.hero-frame{gap:88px}}
   .hero-top,.hero-mid{position:relative;z-index:2}
-  .hero-top{display:flex;align-items:baseline;justify-content:space-between;gap:16px 32px;flex-wrap:wrap}
+  /* 移动端：竖排，让 eyebrow 与 sub 各自一行，不被挤扁 */
+  .hero-top{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+  @media(min-width:768px){
+    .hero-top{flex-direction:row;align-items:baseline;justify-content:space-between;gap:16px 32px;flex-wrap:wrap}
+  }
   .hero__eyebrow{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.18em}
   .hero__sub{font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--ink-soft)}
-  .hero-mid{max-width:34em}
-  .hero__title{font-size:clamp(2.5rem,5.6vw,4.9rem);font-weight:600;line-height:1.22;letter-spacing:.01em}
+  .hero-mid{max-width:34em;margin-top:auto}
+  @media(min-width:768px){.hero-mid{margin-top:0}}
+  .hero__title{font-size:clamp(2.1rem,9vw,4.9rem);font-weight:600;line-height:1.22;letter-spacing:.01em}
+  @media(min-width:768px){.hero__title{font-size:clamp(2.5rem,5.6vw,4.9rem)}}
   .hero__title span{display:block}
-  .hero__subEn{margin-top:20px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--ink-faint)}
+  .hero__subEn{margin-top:20px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-faint);line-height:1.6;max-width:22em}
+  @media(min-width:768px){.hero__subEn{font-size:12px;letter-spacing:.16em;line-height:1.5;max-width:none}}
   .hero__body{margin-top:24px;font-size:14px;line-height:2;color:var(--ink-soft);max-width:30em}
   @media(min-width:768px){.hero__body{font-size:15px}}
 
@@ -420,7 +429,7 @@
   @media(min-width:768px){.contact__channels{margin-top:56px;gap:16px 56px}}
   .contact__mail{font-size:clamp(1.375rem,3vw,2rem);font-weight:500}
   .contact__phone{font-size:clamp(1.125rem,2.4vw,1.5rem);font-weight:500;color:var(--ink-soft)}
-  .contact__foot{margin-top:56px;padding-top:24px;
+  .contact__foot{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);
     display:flex;flex-wrap:wrap;gap:12px 40px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
 
   /* footer 整块删除 */
@@ -850,8 +859,7 @@ var SITE = {
   contact: {
     eyebrow: "Contact｜联系我",
     heading: ["把洞察变成行动", "From Insight to Action"],
-    body: "如果你的团队正在定义一个新产品、寻找新的用户机会，或需要把复杂的产品价值转化成清晰的市场表达，欢迎交流",
-    tags: "AI Product / Product Strategy / PMM / User Insight"
+    body: "如果你的团队正在定义一个新产品、寻找新的用户机会，或需要把复杂的产品价值转化成清晰的市场表达，欢迎交流"
   }
 };
 /* ==================================================================
@@ -1167,7 +1175,6 @@ var SITE = {
       '<div class="contact__foot reveal"' + d(320) + '>' +
         '<span>' + esc(SITE.name) + '</span>' +
         '<span>' + esc(SITE.location) + '</span>' +
-        '<span>' + esc(c.tags) + '</span>' +
       '</div>' +
     '</section>';
   }
