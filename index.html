@@ -14,7 +14,7 @@
      所有文字都在引号里，改引号里的字就行，不要碰引号外面的标点。
   2) 换图片：在「文案区」里找 photos: []，
      把图片文件名填进方括号，用英文逗号隔开。例如：
-         photos: ["images/works/01-hero.jpg", "images/works/01-b.jpg"]
+         photos: ["images/works/AI公仔主视觉01.jpg", "images/works/AI公仔主视觉02.jpg"]
      一个位置放 1 张就是静止图；放 2 张以上会自动变成横向滚动轮播。
      图片放进本文件旁边的 images/works/ 文件夹。
   3) 保存后按 Ctrl+S，浏览器里 F5 刷新。
@@ -294,10 +294,19 @@
   .sub{margin-top:48px}
   @media(min-width:768px){.sub{margin-top:72px}}
   @media(min-width:1024px){.sub{margin-top:56px}}
+  /* 内容稀疏的小节（如 Case 04，每段只有一行字）自动收紧，
+     否则大间距会把短文字撑成大片空白。字数由渲染时判断后加类。 */
+  .sub--tight{margin-top:28px}
+  @media(min-width:768px){.sub--tight{margin-top:40px}}
+  @media(min-width:1024px){.sub--tight{margin-top:36px}}
   .sub__head{
     display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
     padding-top:20px;
   }
+  .sub--tight .sub__head{padding-top:14px}
+  .sub--tight .sub__body{margin-top:14px;gap:14px}
+  @media(min-width:768px){.sub--tight .sub__body{margin-top:18px;gap:18px}}
+  .sub--tight .sub__text{gap:14px}
   .sub__no{font-size:12px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:.1em}
   .sub__title{font-size:1.375rem;font-weight:600;line-height:1.35;letter-spacing:.005em}
   @media(min-width:768px){.sub__title{font-size:1.5rem}}
@@ -330,6 +339,9 @@
     /* 单图微调：通过数据 fit 字段覆盖默认尺寸 */
     .sub__fig img.img-fit-small{max-width:200px}
     .sub__fig img.img-fit-large{max-width:380px}
+    /* 稀疏小节里的图同步缩小：一行文字配 300px 大图会留出大量空白 */
+    .sub--tight .sub__fig img{max-width:190px}
+    .sub--tight .sub__body--with-img{column-gap:40px}
   }
 
   /* ---------- 案例视觉（图片轮播） ---------- */
@@ -1202,6 +1214,12 @@ var SITE = {
         ? '<div class="sub__emphasis">' + s.emphasis.map(function (e) { return '<p>' + esc(e) + '</p>'; }).join("") + '</div>'
         : "";
       var hasImg = !!(s.images && s.images.length);
+      // 内容密度自适应：文字很少的小节（比如 Case 04 每段只有一行）
+      // 如果沿用大间距，会出现大片空白。这里按字数判断是否收紧。
+      var textLen = (s.paragraphs || []).join('').length
+        + (s.bullets || []).join('').length
+        + (s.emphasis || []).join('').length;
+      var tight = textLen > 0 && textLen < 50;
       var imgs = hasImg
         ? '<div class="sub__fig">' + s.images.map(function (item) {
             // 兼容字符串或 { src, fit } 两种形式
@@ -1211,7 +1229,7 @@ var SITE = {
             return '<img src="' + esc(src) + '" alt="" loading="lazy" decoding="async"' + cls + '>';
           }).join("") + '</div>'
         : "";
-      return '<div class="sub reveal"' + d(i * 100) + '>' +
+      return '<div class="sub reveal' + (tight ? ' sub--tight' : '') + '"' + d(i * 100) + '>' +
         '<div class="sub__head">' +
           '<span class="sub__no">' + esc(s.no) + '｜</span>' +
           '<h4 class="sub__title">' + esc(s.title) + '</h4>' +
