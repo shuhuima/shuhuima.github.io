@@ -280,21 +280,23 @@
   /* thumbmeta 已移除 */
 
   /* ---------- 案例展开后内容 ---------- */
-  .case-card__body{padding:8px 0 72px}
-  @media(min-width:1024px){.case-card__body{padding:16px 0 120px;padding-left:96px}}
+  .case-card__body{padding:8px 0 56px}
+  @media(min-width:1024px){.case-card__body{padding:16px 0 88px;padding-left:96px}}
   .case-card__intro{font-size:18px;line-height:1.9;font-weight:400;color:var(--ink)}
   @media(min-width:768px){.case-card__intro{font-size:22px;line-height:1.85}}
   .case-card__introMeta{margin-top:14px;font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--ink-faint)}
   .case-card__lead{margin-top:32px;font-size:15px;line-height:2.05;color:var(--ink-soft);max-width:56em}
   @media(min-width:768px){.case-card__lead{font-size:16px;margin-top:40px}}
-  .case-card__closer{margin-top:56px;font-size:16px;line-height:1.9;color:var(--ink);max-width:56em;font-weight:400}
+  .case-card__closer{margin-top:36px;font-size:16px;line-height:1.9;color:var(--ink);max-width:56em;font-weight:400}
+  @media(min-width:768px){.case-card__closer{margin-top:48px}}
 
   /* ---------- 案例内的子分区段（01 / 02 / 03 / 04） ---------- */
-  .sub{margin-top:64px}
-  @media(min-width:768px){.sub{margin-top:96px}}
+  .sub{margin-top:48px}
+  @media(min-width:768px){.sub{margin-top:72px}}
+  @media(min-width:1024px){.sub{margin-top:56px}}
   .sub__head{
     display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
-    padding-top:24px;
+    padding-top:20px;
   }
   .sub__no{font-size:12px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:.1em}
   .sub__title{font-size:1.375rem;font-weight:600;line-height:1.35;letter-spacing:.005em}
@@ -332,8 +334,8 @@
 
   /* ---------- 案例视觉（图片轮播） ---------- */
   /* ---------- 展开后：关键数据 ---------- */
-  .key-numbers{margin-top:80px;padding-top:24px}
-  @media(min-width:768px){.key-numbers{margin-top:104px}}
+  .key-numbers{margin-top:56px;padding-top:24px}
+  @media(min-width:768px){.key-numbers{margin-top:72px}}
   .key-numbers__title{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
   .key-numbers__grid{margin-top:32px;display:grid;gap:32px}
   @media(min-width:768px){.key-numbers__grid{grid-template-columns:repeat(5,1fr);gap:32px}}
@@ -432,6 +434,25 @@
   .contact__foot{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);
     display:flex;flex-wrap:wrap;gap:12px 40px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
 
+  /* ---------- 纯 CSS 数据图表 ---------- */
+  .chart{margin-top:40px;width:100%}
+  .chart__title{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:18px}
+  /* A｜两条横向对比条 */
+  .chart-A{display:flex;flex-direction:column;gap:14px}
+  .chart-A__row{display:flex;align-items:center;gap:16px}
+  .chart-A__label{flex-shrink:0;width:4.5em;font-size:13px;font-weight:600;color:var(--ink-soft);letter-spacing:.04em}
+  .chart-A__bar-wrap{flex:1;min-width:0;display:flex;align-items:center;gap:14px}
+  .chart-A__bar{display:block;height:12px;border-radius:2px;min-width:2px}
+  .chart-A__val{font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink-soft);white-space:nowrap;letter-spacing:.02em}
+  .chart-A__delta{font-size:11px;color:var(--ink-faint);margin-left:4px;font-weight:500}
+  /* B｜数据清洗漏斗（两条） */
+  .chart-B{max-width:none}
+  @media(min-width:768px){.chart-B{max-width:66.666%}}
+  .chart-B__row{display:flex;align-items:center;flex-wrap:wrap;gap:12px;min-height:24px;margin-bottom:8px}
+  .chart-B__bar{display:flex;align-items:center;justify-content:flex-end;height:14px;border-radius:2px;padding:0 12px;color:#fff;font-size:11px;font-weight:600;letter-spacing:.04em;white-space:nowrap;flex-shrink:0}
+  .chart-B__val{flex:1 1 auto;min-width:0;font-size:11px;color:var(--ink-soft);font-weight:500;letter-spacing:.02em;line-height:1.6}
+  .chart-B__caption{margin-top:10px;font-size:11px;line-height:1.7;color:var(--ink-faint)}
+
   /* footer 整块删除 */
 </style>
 </head>
@@ -470,9 +491,9 @@ var SITE = {
       "到产品与市场"
     ],
     headlineEn: "From User Insight to Product & Market",
-    sub: "4 年市场与用户研究经验，近一年聚焦 AI 产品",
-    body: "参与 AI IP 公仔从 0→1 的用户定位、产品形态、IP 人格、产品体验与上市表达，并将研究结论进一步转化为产品策划与市场决策",
-    tagline: "用户洞察 × 产品企划 × AI 产品 × PMM",
+    sub: "4年市场与用户研究经验，近一年聚焦 AI 产品，此前深耕快消与医疗健康品类",
+    body: "参与 AI IP 公仔从0→1的用户定位、产品形态、IP 人格、产品体验与上市表达，并将研究结论进一步转化为产品策划与市场决策",
+    tagline: "用户洞察 × 产品企划｜AI 硬件 · 消费品",
     taglineEn: "User Insight × Product Strategy × AI Product × PMM",
     closer: []
   },
@@ -482,9 +503,9 @@ var SITE = {
      ================================================================== */
   about: {
     eyebrow: "About Me｜关于我",
-    heading: ["从洞察出发，", "走到产品与市场"],
+    heading: ["从洞察出发", "走到产品与市场"],
     headingEn: "From Insight to Product & Market",
-    intro: "我是马淑慧，在产品企划、市场营销与用户研究有 4 年工作经验，近一年主要参与 AI 产品相关工作",
+    intro: "我是马淑慧，在产品企划、市场营销与用户研究有4年工作经验，近一年主要参与 AI 产品相关工作",
     note: "我的工作通常跨越三个阶段",
     phases: [
       {
@@ -497,7 +518,7 @@ var SITE = {
         no: "02",
         title: "定义产品",
         titleEn: "Define the Product",
-        body: "将研究结论转化为产品定位、使用场景、功能边界与体验方案，并参与软硬件产品从 0→1 的定义与验证"
+        body: "将研究结论转化为产品定位、使用场景、功能边界与体验方案，并参与软硬件产品从0→1的定义与验证"
       },
       {
         no: "03",
@@ -519,13 +540,13 @@ var SITE = {
     {
       no: "01",
       client: "Wander Puffs",
-      title: "从用户洞察到 AI IP 公仔 0→1",
+      title: "从用户洞察到 AI IP 公仔0→1",
       subtitle: "AI Companion Product · 0→1 Definition",
       year: "2024 — 2025",
       category: "Product Planning · User Research",
 
       // 卡片上显示的精简信息
-      brief: "参与一款面向家庭场景的 AI 陪伴公仔从 0→1 定义，覆盖用户定位、产品形态、IP 人格、App 体验、AI 交互与商业转化。",
+      brief: "参与一款面向家庭场景的 AI 陪伴公仔从0→1定义，覆盖用户定位、产品形态、IP 人格、App 体验、AI 交互与商业转化。",
       metrics: [
         { value: "220,000+", label: "交互数据" },
         { value: "48%",      label: "剔除率" },
@@ -546,23 +567,32 @@ var SITE = {
 
       // 展开后的完整内容
       intro: "一款面向家庭场景的 AI 陪伴公仔",
-      introMeta: "参与产品从 0→1 的定义，覆盖用户定位、产品形态、IP 人格、App 体验、AI 交互与商业转化",
-      lead: "项目初期，团队对目标用户的判断主要停留在「20–35 岁女性」。通过用户研究与 22 万条真实交互数据分析，我重新梳理用户、人群与使用场景，并将研究结论进一步推进到产品形态与功能定义。",
+      introMeta: "参与产品从0→1的定义，覆盖用户定位、产品形态、IP 人格、App 体验、AI 交互与商业转化",
+      lead: "项目初期，团队对目标用户的判断主要停留在「20–35岁女性」。通过用户研究与22万条真实交互数据分析，我重新梳理用户、人群与使用场景，并将研究结论进一步推进到产品形态与功能定义。",
       sections: [
         {
           no: "01",
           title: "重新定义用户与场景",
           subtitle: "User & Scenario Definition",
           paragraphs: [
-            "从 22 万条原始交互中处理测试流量、重复会话与无效输入，最终剔除 48%，建立可用于分析的真实用户样本",
+            "从22万条原始交互中处理测试流量、重复会话与无效输入，最终剔除48%，建立可用于分析的真实用户样本",
             "分析发现，实际使用并非单一的情绪陪伴，而呈现出明显的家庭使用特征",
-            "由此推动目标人群从「20–35 岁女性」进一步聚焦至"
+            "由此推动目标人群从「20–35岁女性」进一步聚焦至"
           ],
           emphasis: [
             "晚间高频使用｜儿童语音输入｜睡前陪伴｜家庭亲子场景",
             "母婴 / 家庭亲子用户"
           ],
-          images: ["images/works/case1-01部分配图.jpg"]
+          images: ["images/works/case1-01部分配图.jpg"],
+          extra: {
+            type: "funnel-2",
+            title: "原始交互数据的清洗过程",
+            rows: [
+              { pct: 100, fill: "#2B2B2B", label: "22万+条 原始交互数据", inside: true, kind: "raw" },
+              { pct: 52,  fill: "#8A8A8A", label: "真实用户样本（可用于分析）", kind: "clean" }
+            ],
+            caption: "剔除测试流量、重复会话与无效输入，共48%"
+          }
         },
         {
           no: "02",
@@ -645,13 +675,23 @@ var SITE = {
         hint: "",
         ratio: "4/3",
         photos: [
-          "images/works/儿童模式主视觉.jpg"
+          "images/works/儿童模式主视觉01.jpg",
+          "images/works/儿童模式主视觉02.jpg",
+          "images/works/儿童模式主视觉03.jpg"
         ]
       },
 
       intro: "儿童模式不只是过滤成人内容，而是需要重新定义儿童场景下产品应该会什么、不应该做什么",
       introMeta: "从真实儿童使用场景出发，重新定义产品能力与边界，再通过 Prompt 迭代与评测体系将这些要求落到具体 AI 行为",
       lead: "",
+      chart: {
+        type: "bars-2",
+        title: "儿童相关用户占比（儿童模式上线前后）",
+        rows: [
+          { label: "上线前", pct: 37.2, fill: "#D8D8D4", value: "37.2%" },
+          { label: "上线后", pct: 45.8, fill: "#2B2B2B", value: "45.8%", bold: true, delta: "+8.6pct" }
+        ]
+      },
       sections: [
         {
           no: "01",
@@ -685,7 +725,7 @@ var SITE = {
           title: "通过 Prompt 迭代完成 AI 行为定义",
           subtitle: "Prompt Iteration",
           paragraphs: [
-            "围绕语气稳定性、内容安全性、多轮一致性进行 3 版 Prompt 迭代",
+            "围绕语气稳定性、内容安全性、多轮一致性进行3版 Prompt 迭代",
             "每版保留对照记录：改了什么 → 为什么改 → 效果如何",
             "使 AI 行为调整能够被复盘与持续优化"
           ]
@@ -704,7 +744,6 @@ var SITE = {
       closer: "",
       keyNumbers: [
         { value: "3",        label: "Prompt 迭代" },
-        { value: "37.2% → 45.8%", label: "儿童用户占比" },
         { value: "48.9%",    label: "新增用户为儿童相关" },
         { value: "1",        label: "AI 评测体系" },
         { value: "3",        label: "角色模型" }
@@ -718,11 +757,11 @@ var SITE = {
       no: "03",
       client: "Consumer Insight → PMM",
       title: "从用户研究到上市表达",
-      subtitle: "PMM · Positioning & Go-to-Market",
+      subtitle: "PMM · Positioning & Go-to-Market｜第四份工作 · AI 陪伴硬件 · 2025.08-2026.06",
       year: "2023 — 2024",
       category: "Market Research · Pricing · Go-to-Market",
 
-      brief: "将用户研究延伸至定位、定价、卖点、内容与上市表达，覆盖 10+ 款新品项目。",
+      brief: "将用户研究延伸至定位、定价、卖点、内容与上市表达，覆盖10+款新品项目。",
       metrics: [
         { value: "366", label: "有效问卷" },
         { value: "10+", label: "新品项目" },
@@ -742,7 +781,7 @@ var SITE = {
       },
 
       intro: "研究的价值不只在于找到用户需求，也在于帮助产品做出更准确的市场决策",
-      introMeta: "在 10+ 款新品项目中，将用户研究进一步延伸至定位、定价、卖点、内容与上市表达，并结合市场反馈持续验证",
+      introMeta: "在10+款新品项目中，将用户研究进一步延伸至定位、定价、卖点、内容与上市表达，并结合市场反馈持续验证",
       lead: "",
       sections: [
         {
@@ -750,7 +789,7 @@ var SITE = {
           title: "市场洞察",
           subtitle: "Market Insight",
           paragraphs: [
-            "通过 366 份有效问卷、用户研究与竞品分析，回答三个问题：谁在购买、为什么愿意付钱、什么价值与表达能够推动决策",
+            "通过366份有效问卷、用户研究与竞品分析，回答三个问题：谁在购买、为什么愿意付钱、什么价值与表达能够推动决策",
             "同时识别价格敏感区间、核心购买动机与不同人群之间的需求差异"
           ],
           bullets: ["谁在购买", "为什么愿意付钱", "什么价值与表达能够推动决策"],
@@ -787,9 +826,9 @@ var SITE = {
           title: "上市验证",
           subtitle: "Go-to-Market",
           paragraphs: [
-            "覆盖 10+ 款新品从产品概念到上市物料的表达链路",
+            "覆盖10+款新品从产品概念到上市物料的表达链路",
             "其中高端产品线进一步获得市场验证",
-            "同时完成 30+ 个 SKU 详情页与 50+ 电商主图 brief"
+            "完成30+个 SKU 详情页"
           ],
           images: []
         }
@@ -799,8 +838,84 @@ var SITE = {
         { value: "366", label: "有效问卷" },
         { value: "10+", label: "新品项目" },
         { value: "30+", label: "SKU 详情页" },
-        { value: "20+", label: "包装文案" },
         { value: "100+",label: "用户产品反馈" }
+      ]
+    },
+
+    /* ================================================================
+       ▼ 案例 04
+       ================================================================ */
+    {
+      no: "04",
+      client: "Consumer Brand",
+      title: "从品牌调研到销量破万：菌菇品牌0→1",
+      subtitle: "Consumer Brand · 0→1｜2024.10-2025.06",
+      year: "2024.10-2025.06",
+      category: "Brand Research · Product Planning · Go-to-Market",
+
+      brief: "主导区域菌菇品牌全链路企划，从市场调研、卖点定义到包装定稿与上市，上线2个月销量破万。",
+      metrics: [
+        { value: "破万", label: "上线2个月销量" },
+        { value: "20+",  label: "新品上市" },
+        { value: "52",   label: "SKU 详情页优化" },
+        { value: "+100", label: "日均咨询量" }
+      ],
+      cardImage: {
+        slot: "",
+        caption: "",
+        hint: "此处放置图片",
+        ratio: "4/3",
+        photos: [
+          "images/works/case4-主视觉图01.jpg",
+          "images/works/case4-主视觉图02.jpg",
+          "images/works/case4-主视觉图03.jpg"
+        ]
+      },
+
+      intro: "区域菌菇品牌从0→1的全链路企划",
+      introMeta: "覆盖市场调研、卖点定义、包装设计与上市表达，推动品牌上线并在2个月内销量破万",
+      lead: "",
+      sections: [
+        {
+          no: "01",
+          title: "洞察",
+          subtitle: "Market Insight",
+          paragraphs: [
+            "菌菇干货市场调研与竞品价格带拆解，锁定“有机+产地”差异化空位"
+          ],
+          images: ["images/works/case4-01部分配图.jpg"]
+        },
+        {
+          no: "02",
+          title: "定义",
+          subtitle: "Selling Point",
+          paragraphs: [
+            "提炼核心卖点，确立“围绕单一核心特质展开”的表达标准"
+          ]
+        },
+        {
+          no: "03",
+          title: "落地",
+          subtitle: "Execution",
+          paragraphs: [
+            "包装设计提案、详情页、产地宣传脚本，交付4份核心文档"
+          ]
+        },
+        {
+          no: "04",
+          title: "结果",
+          subtitle: "Result",
+          paragraphs: [
+            "推动至包装设计定稿；品牌上线2个月销量破万"
+          ]
+        }
+      ],
+      closer: "同期完成20+包装文案与50+电商主图brief；更早在特医食品品类完成小程序商城0→1。品类在变，洞察→定义→卖点→上市的方法不变。",
+      keyNumbers: [
+        { value: "2个月", label: "销量破万" },
+        { value: "20+",   label: "新品上市" },
+        { value: "52",    label: "SKU详情页优化" },
+        { value: "+100",  label: "日均咨询量（对照组验证）" }
       ]
     }
   ],
@@ -935,7 +1050,7 @@ var SITE = {
     return '<header class="site-header" id="siteHeader"><div class="shell site-header__inner">' +
       '<a href="#top" class="brand">' +
         '<span class="brand__name">' + esc(SITE.name) + '</span>' +
-        '<span class="brand__role">用户洞察 × 产品企划 × AI 产品 × PMM</span>' +
+        '<span class="brand__role">' + esc(SITE.hero.tagline) + '</span>' +
       '</a>' +
       '<nav class="nav" aria-label="主导航">' +
         '<a href="#about">About</a>' +
@@ -1000,6 +1115,45 @@ var SITE = {
     '</section>';
   }
 
+  /* ---------- 纯 CSS 数据图表 ---------- */
+  function chartHTML(cfg) {
+    if (!cfg) return "";
+    if (cfg.type === "bars-2") {
+      var rows = cfg.rows.map(function (r) {
+        return '<div class="chart-A__row">' +
+          '<span class="chart-A__label">' + esc(r.label) + '</span>' +
+          '<span class="chart-A__bar-wrap">' +
+            '<span class="chart-A__bar" style="width:' + r.pct + '%;background:' + esc(r.fill) + '"></span>' +
+            '<span class="chart-A__val"' + (r.bold ? ' style="font-weight:700;color:var(--ink)"' : '') + '>' +
+              esc(r.value) +
+              (r.delta ? ' <span class="chart-A__delta">' + esc(r.delta) + '</span>' : '') +
+            '</span>' +
+          '</span>' +
+        '</div>';
+      }).join("");
+      return '<div class="chart chart-A">' +
+        '<p class="chart__title">' + esc(cfg.title) + '</p>' +
+        rows +
+      '</div>';
+    }
+    if (cfg.type === "funnel-2") {
+      var rows = cfg.rows.map(function (r) {
+        var barCls = 'chart-B__bar chart-B__bar--' + esc(r.kind);
+        var bar = '<span class="' + barCls + '" style="width:' + r.pct + '%;background:' + esc(r.fill) + '">' +
+          (r.inside ? esc(r.label) : '') + '</span>';
+        return '<div class="chart-B__row">' + bar +
+          (r.inside ? '' : '<span class="chart-B__val">' + esc(r.label) + '</span>') +
+        '</div>';
+      }).join("");
+      return '<div class="chart chart-B">' +
+        '<p class="chart__title">' + esc(cfg.title) + '</p>' +
+        rows +
+        (cfg.caption ? '<p class="chart-B__caption">' + esc(cfg.caption) + '</p>' : '') +
+      '</div>';
+    }
+    return "";
+  }
+
   /* ---------- 案例：横向卡片（默认折叠） ---------- */
   function caseCardHTML(w, i) {
     /* ===== 卡片默认状态：编号 + 标题 + 一句话描述 + 关键数据 + 一张图 + 查看详情 ===== */
@@ -1031,6 +1185,7 @@ var SITE = {
         (w.lead ? '<p class="case-card__lead">' + esc(w.lead) + '</p>' : '') +
         sectionsHTML(w.sections) +
         closerHTML(w.closer) +
+        (w.chart ? chartHTML(w.chart) : '') +
         keyNumbersHTML(w.keyNumbers) +
       '</div>';
 
@@ -1063,7 +1218,7 @@ var SITE = {
           '<span class="sub__subEn">' + esc(s.subtitle) + '</span>' +
         '</div>' +
         '<div class="sub__body' + (hasImg ? ' sub__body--with-img' : '') + '">' +
-          '<div class="sub__text">' + body + bullets + emphasis + '</div>' +
+          '<div class="sub__text">' + body + bullets + emphasis + (s.extra ? chartHTML(s.extra) : '') + '</div>' +
           imgs +
         '</div>' +
       '</div>';
@@ -1096,7 +1251,7 @@ var SITE = {
           '<p class="sec-head__eyebrow reveal"><span class="sec-head__label">Selected Work｜项目精选</span></p>' +
           '<div class="sec-head__row">' +
             '<h2 class="sec-head__title">' +
-              '<span class="reveal"' + d(120) + '>三个案例</span>' +
+              '<span class="reveal" style="font-weight:800"' + d(120) + '>四个案例</span>' +
               '<span class="reveal"' + d(280) + '>从洞察一路走到产品里</span>' +
             '</h2>' +
           '</div>' +
