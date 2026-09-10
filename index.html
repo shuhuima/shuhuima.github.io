@@ -288,6 +288,7 @@
   .case-card__lead{margin-top:32px;font-size:15px;line-height:2.05;color:var(--ink-soft);max-width:56em}
   @media(min-width:768px){.case-card__lead{font-size:16px;margin-top:40px}}
   .case-card__closer{margin-top:36px;font-size:16px;line-height:1.9;color:var(--ink);max-width:56em;font-weight:400}
+  .case-card__closer p + p{margin-top:16px}
   @media(min-width:768px){.case-card__closer{margin-top:48px}}
 
   /* ---------- 案例内的子分区段（01 / 02 / 03 / 04） ---------- */
@@ -342,6 +343,10 @@
     /* 稀疏小节里的图同步缩小：一行文字配 300px 大图会留出大量空白 */
     .sub--tight .sub__fig img{max-width:190px}
     .sub--tight .sub__body--with-img{column-gap:40px}
+    /* imgBelow 模式：图片放到文字下方（不进左右分栏），覆盖 tight 缩图 */
+    .sub--below .sub__fig{margin-top:-4px}
+    .sub--below .sub__fig img{max-width:440px}
+    .sub--tight.sub--below .sub__fig img{max-width:440px}
   }
 
   /* ---------- 案例视觉（图片轮播） ---------- */
@@ -895,7 +900,8 @@ var SITE = {
           paragraphs: [
             "菌菇干货市场调研与竞品价格带拆解，锁定“有机+产地”差异化空位"
           ],
-          images: ["images/works/case4-01部分配图.jpg"]
+          images: ["images/works/case4-01部分配图.jpg"],
+          imgBelow: true
         },
         {
           no: "02",
@@ -922,7 +928,10 @@ var SITE = {
           ]
         }
       ],
-      closer: "同期完成20+包装文案与50+电商主图brief；更早在特医食品品类完成小程序商城0→1。品类在变，洞察→定义→卖点→上市的方法不变。",
+      closer: [
+        "同期完成20+包装文案与50+电商主图brief；更早在特医食品品类完成小程序商城0→1",
+        "品类在变，洞察→定义→卖点→上市的方法不变"
+      ],
       keyNumbers: [
         { value: "2个月", label: "销量破万" },
         { value: "20+",   label: "新品上市" },
@@ -1214,6 +1223,8 @@ var SITE = {
         ? '<div class="sub__emphasis">' + s.emphasis.map(function (e) { return '<p>' + esc(e) + '</p>'; }).join("") + '</div>'
         : "";
       var hasImg = !!(s.images && s.images.length);
+      // imgBelow: 图片放到文字正下方（不左右分栏），适合窄图/文字很短的小节
+      var below = !!s.imgBelow;
       // 内容密度自适应：文字很少的小节（比如 Case 04 每段只有一行）
       // 如果沿用大间距，会出现大片空白。这里按字数判断是否收紧。
       var textLen = (s.paragraphs || []).join('').length
@@ -1229,13 +1240,13 @@ var SITE = {
             return '<img src="' + esc(src) + '" alt="" loading="lazy" decoding="async"' + cls + '>';
           }).join("") + '</div>'
         : "";
-      return '<div class="sub reveal' + (tight ? ' sub--tight' : '') + '"' + d(i * 100) + '>' +
+      return '<div class="sub reveal' + (tight ? ' sub--tight' : '') + (below ? ' sub--below' : '') + '"' + d(i * 100) + '>' +
         '<div class="sub__head">' +
           '<span class="sub__no">' + esc(s.no) + '｜</span>' +
           '<h4 class="sub__title">' + esc(s.title) + '</h4>' +
           '<span class="sub__subEn">' + esc(s.subtitle) + '</span>' +
         '</div>' +
-        '<div class="sub__body' + (hasImg ? ' sub__body--with-img' : '') + '">' +
+        '<div class="sub__body' + (hasImg && !below ? ' sub__body--with-img' : '') + '">' +
           '<div class="sub__text">' + body + bullets + emphasis + (s.extra ? chartHTML(s.extra) : '') + '</div>' +
           imgs +
         '</div>' +
@@ -1244,7 +1255,12 @@ var SITE = {
   }
 
   function closerHTML(c) {
-    return c ? '<p class="case-card__closer reveal">' + esc(c) + '</p>' : "";
+    if (!c) return "";
+    // 兼容字符串或字符串数组：数组时每项独立成段，避免长句挤成一坨
+    var lines = Array.isArray(c) ? c : [c];
+    return '<div class="case-card__closer reveal">' +
+      lines.map(function (l) { return '<p>' + esc(l) + '</p>'; }).join("") +
+      '</div>';
   }
 
   function keyNumbersHTML(m) {
