@@ -447,6 +447,18 @@
   .bring__body{margin-top:12px;font-size:14px;line-height:2;color:var(--ink-soft)}
 
   /* ---------- Contact ---------- */
+  /* 回到首页：放在 Contact 标题右侧，克制的细字 + 细箭头 */
+  .contact__back{
+    margin-top:24px;display:inline-flex;align-items:baseline;gap:10px;
+    font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--ink-faint);
+    transition:color .5s var(--ease);
+  }
+  @media(min-width:1024px){.contact__back{margin-top:0;padding-bottom:6px}}
+  .contact__back-en{text-transform:uppercase}
+  .contact__back-arrow{font-size:13px;line-height:1;transition:transform .5s var(--ease)}
+  .contact__back:hover{color:var(--ink)}
+  .contact__back:hover .contact__back-arrow{transform:translateY(-4px)}
+
   .contact__body{margin-top:48px;max-width:52em;font-size:16px;line-height:2.05;color:var(--ink-soft)}
   @media(min-width:768px){.contact__body{margin-top:64px;font-size:17px}}
   .contact__channels{margin-top:40px;display:flex;flex-wrap:wrap;align-items:baseline;gap:12px 40px}
@@ -875,7 +887,7 @@ var SITE = {
       year: "2024.10-2025.06",
       category: "Brand Research · Product Planning · Go-to-Market",
 
-      brief: "主导区域菌菇品牌全链路企划，从市场调研、卖点定义到包装定稿与上市，上线2个月销量破万。",
+      brief: "主导菌菇品牌全链路企划，从市场调研、卖点定义到包装定稿与上市，上线2个月销量破万。",
       metrics: [
         { value: "破万", label: "上线2个月销量" },
         { value: "20+",  label: "新品上市" },
@@ -1000,7 +1012,9 @@ var SITE = {
   contact: {
     eyebrow: "Contact｜联系我",
     heading: ["把洞察变成行动", "From Insight to Action"],
-    body: "如果你的团队正在定义一个新产品、寻找新的用户机会，或需要把复杂的产品价值转化成清晰的市场表达，欢迎交流"
+    body: "如果你的团队正在定义一个新产品、寻找新的用户机会，或需要把复杂的产品价值转化成清晰的市场表达，欢迎交流",
+    backZh: "回到首页",
+    backEn: "Back to Top"
   }
 };
 /* ==================================================================
@@ -1361,7 +1375,14 @@ var SITE = {
     return '<section id="contact" class="shell contact">' +
       '<div class="sec-head">' +
         '<p class="sec-head__eyebrow reveal"><span class="sec-head__label">' + esc(c.eyebrow) + '</span></p>' +
-        '<div class="sec-head__row"><h2 class="sec-head__title">' + titleLines + '</h2></div>' +
+        '<div class="sec-head__row">' +
+          '<h2 class="sec-head__title">' + titleLines + '</h2>' +
+          '<a href="#top" class="contact__back reveal"' + d(320) + '>' +
+            '<span>' + esc(c.backZh) + '</span>' +
+            '<span class="contact__back-en">' + esc(c.backEn) + '</span>' +
+            '<span class="contact__back-arrow" aria-hidden="true">&#8593;</span>' +
+          '</a>' +
+        '</div>' +
       '</div>' +
       '<p class="contact__body reveal">' + esc(c.body) + '</p>' +
       '<div class="contact__channels reveal"' + d(180) + '>' +
