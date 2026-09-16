@@ -171,6 +171,9 @@
   @media(min-width:1024px){.sec-head__row{display:flex;align-items:flex-end;justify-content:space-between;gap:80px}}
   .sec-head__title{max-width:22em;font-size:clamp(1.75rem,3.4vw,3rem);font-weight:600;line-height:1.35;letter-spacing:.005em}
   .sec-head__title span{display:block}
+  /* 案例区标题下的补充小字（案例之间的递进关系） */
+  .sec-head__note{margin-top:24px;font-size:12px;line-height:1.9;letter-spacing:.03em;color:var(--ink-faint);max-width:38em}
+  @media(min-width:768px){.sec-head__note{margin-top:28px;font-size:13px}}
   .sec-head__aside{margin-top:20px;font-size:12px;font-weight:500;line-height:2;letter-spacing:.06em;color:var(--ink-faint)}
   @media(min-width:1024px){.sec-head__aside{margin-top:0;max-width:24em;flex-shrink:0}}
 
@@ -286,6 +289,8 @@
   @media(min-width:768px){.case-card__intro{font-size:22px;line-height:1.85}}
   .case-card__introMeta{margin-top:14px;font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--ink-faint)}
   .case-card__lead{margin-top:32px;font-size:15px;line-height:2.05;color:var(--ink-soft);max-width:56em}
+  /* 展开后的角色行：让读者快速定位「我在里面负责什么」 */
+  .case-card__role{margin-top:28px;font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--ink-faint)}
   @media(min-width:768px){.case-card__lead{font-size:16px;margin-top:40px}}
   .case-card__closer{margin-top:36px;font-size:16px;line-height:1.9;color:var(--ink);max-width:56em;font-weight:400}
   .case-card__closer p + p{margin-top:16px}
@@ -507,9 +512,9 @@ var SITE = {
       "从用户洞察",
       "到产品与市场"
     ],
-    headlineEn: "From User Insight to Product & Market",
-    sub: "4年市场与用户研究经验，近一年聚焦 AI 产品，此前深耕快消与医疗健康品类",
-    body: "参与 AI IP 公仔从0→1的用户定位、产品形态、IP 人格、产品体验与上市表达，并将研究结论进一步转化为产品策划与市场决策",
+    headlineEn: "From Insight to Product & Market",
+    sub: "4年消费者洞察与产品企划经验，覆盖 AI 消费硬件、快消与医疗健康，从真实用户需求出发完成产品定义与市场落地",
+    body: "从真实用户行为中发现机会，将洞察转化为产品定位、功能定义、商业表达与上市决策",
     tagline: "用户洞察 × 产品企划｜AI 硬件 · 消费品",
     taglineEn: "User Insight × Product Strategy × AI Product × PMM",
     closer: []
@@ -522,7 +527,7 @@ var SITE = {
     eyebrow: "About Me｜关于我",
     heading: ["从洞察出发", "走到产品与市场"],
     headingEn: "From Insight to Product & Market",
-    intro: "我是马淑慧，在产品企划、市场营销与用户研究有4年工作经验，近一年主要参与 AI 产品相关工作",
+    intro: "我是马淑慧，4年消费者洞察与产品企划经验，覆盖 AI 消费硬件、快消与医疗健康，从真实用户需求出发完成产品定义与市场落地",
     note: "我的工作通常跨越三个阶段",
     phases: [
       {
@@ -540,7 +545,7 @@ var SITE = {
       {
         no: "03",
         title: "走向市场",
-        titleEn: "Bring It to Market",
+        titleEn: "Go-to-Market",
         body: "进一步将产品价值转化为定位、卖点、内容与上市表达，结合市场反馈持续验证"
       }
     ],
@@ -566,8 +571,8 @@ var SITE = {
       brief: "参与一款面向家庭场景的 AI 陪伴公仔从0→1定义，覆盖用户定位、产品形态、IP 人格、App 体验、AI 交互与商业转化。",
       metrics: [
         { value: "220,000+", label: "交互数据" },
-        { value: "48%",      label: "剔除率" },
-        { value: "3",        label: "个 IP 角色" },
+        { value: "10.5万+",  label: "非真实记录清洗" },
+        { value: "2.4万条",  label: "儿童交互复核" },
         { value: "0→1",      label: "产品定义" }
       ],
       cardImage: {
@@ -592,7 +597,7 @@ var SITE = {
           title: "重新定义用户与场景",
           subtitle: "User & Scenario Definition",
           paragraphs: [
-            "从22万条原始交互中处理测试流量、重复会话与无效输入，最终剔除48%，建立可用于分析的真实用户样本",
+            "从22万条原始交互中识别并清洗10.5万+条测试流量、重复会话与无效输入，建立可用于分析的真实用户样本",
             "分析发现，实际使用并非单一的情绪陪伴，而呈现出明显的家庭使用特征",
             "由此推动目标人群从「20–35岁女性」进一步聚焦至"
           ],
@@ -608,7 +613,7 @@ var SITE = {
               { pct: 100, fill: "#2B2B2B", label: "22万+条 原始交互数据", inside: true, kind: "raw" },
               { pct: 52,  fill: "#8A8A8A", label: "真实用户样本（可用于分析）", kind: "clean" }
             ],
-            caption: "剔除测试流量、重复会话与无效输入，共48%"
+            caption: "识别并清洗测试流量、重复会话与无效输入，共10.5万+条"
           }
         },
         {
@@ -662,8 +667,8 @@ var SITE = {
       closer: "最终形成从「用户 → 场景 → 产品形态 → IP → AI 能力 → App → 市场表达」的一体化产品定义链路",
       keyNumbers: [
         { value: "220,000+", label: "真实交互数据" },
-        { value: "48%",      label: "原始数据剔除率" },
-        { value: "3",        label: "IP 角色模型" },
+        { value: "10.5万+",  label: "非真实记录清洗" },
+        { value: "2.4万条",  label: "儿童交互复核" },
         { value: "0→1",      label: "AI 陪伴产品定义" }
       ]
     },
@@ -865,7 +870,7 @@ var SITE = {
     {
       no: "04",
       client: "Consumer Brand",
-      title: "从品牌调研到销量破万：菌菇品牌0→1",
+      title: "从品牌调研到产品上市：菌菇品牌0→1",
       subtitle: "Consumer Brand · 0→1｜2024.10-2025.06",
       year: "2024.10-2025.06",
       category: "Brand Research · Product Planning · Go-to-Market",
@@ -1077,7 +1082,7 @@ var SITE = {
         '<a href="#about">About</a>' +
         '<a href="#works">Works</a>' +
         '<a href="#how">How</a>' +
-        '<a href="#bring">Bring</a>' +
+        '<a href="#bring">Experience</a>' +
         '<a href="#contact" class="nav__contact">Contact</a>' +
       '</nav>' +
     '</div></header>';
@@ -1204,6 +1209,7 @@ var SITE = {
         '<div class="case-card__intro">' + esc(w.intro) + '</div>' +
         (w.introMeta ? '<p class="case-card__introMeta">' + esc(w.introMeta) + '</p>' : '') +
         (w.lead ? '<p class="case-card__lead">' + esc(w.lead) + '</p>' : '') +
+        (w.category ? '<p class="case-card__role">Role｜我的角色　' + esc(w.category) + '</p>' : '') +
         sectionsHTML(w.sections) +
         closerHTML(w.closer) +
         (w.chart ? chartHTML(w.chart) : '') +
@@ -1289,6 +1295,7 @@ var SITE = {
               '<span class="reveal"' + d(280) + '>从洞察一路走到产品里</span>' +
             '</h2>' +
           '</div>' +
+          '<p class="sec-head__note reveal"' + d(360) + '>AI 陪伴产品：从人群重构 → 产品体验 → 上市表达；消费品牌：从洞察 → 产品 → 市场验证</p>' +
         '</div>' +
         '<div class="works-list" style="margin-top:72px">' + items + '</div>' +
       '</div>' +
