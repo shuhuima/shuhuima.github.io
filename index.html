@@ -447,6 +447,28 @@
   .bring__body{margin-top:12px;font-size:14px;line-height:2;color:var(--ink-soft)}
 
   /* ---------- Contact ---------- */
+  /* ---------- 文档下载：Contact 里的细线列表 ---------- */
+  .docs{margin-top:72px;scroll-margin-top:96px}
+  @media(min-width:768px){.docs{margin-top:96px}}
+  .docs__eyebrow{
+    display:flex;align-items:center;gap:20px;
+    font-size:11px;font-weight:800;letter-spacing:.18em;color:var(--ink);
+  }
+  .docs__eyebrow::after{content:"";flex:1;height:1px;background:var(--ink)}
+  .docs__list{margin-top:28px;max-width:52em}
+  .docs__row{
+    display:flex;align-items:baseline;gap:10px 16px;
+    padding:18px 0;border-top:1px solid var(--line);
+    transition:opacity .5s var(--ease);
+  }
+  .docs__row:last-child{border-bottom:1px solid var(--line)}
+  .docs__name{font-size:16px;font-weight:600;color:var(--ink);letter-spacing:.01em}
+  .docs__en{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+  .docs__meta{margin-left:auto;font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--ink-faint);font-variant-numeric:tabular-nums}
+  .docs__arrow{font-size:14px;line-height:1;color:var(--ink);transition:transform .5s var(--ease)}
+  .docs__row:hover{opacity:.55}
+  .docs__row:hover .docs__arrow{transform:translateY(4px)}
+
   /* 回到首页：放在 Contact 标题右侧，克制的细字 + 细箭头 */
   .contact__back{
     margin-top:24px;display:inline-flex;align-items:baseline;gap:10px;
@@ -1015,6 +1037,24 @@ var SITE = {
     body: "如果你的团队正在定义一个新产品、寻找新的用户机会，或需要把复杂的产品价值转化成清晰的市场表达，欢迎交流",
     backZh: "回到首页",
     backEn: "Back to Top"
+  },
+  /* ---------- 文档下载（PDF 放在 files/ 目录，替换同名文件即可更新） ---------- */
+  docs: {
+    eyebrow: "Document｜文档下载",
+    items: [
+      {
+        zh: "作品集",
+        en: "Portfolio",
+        meta: "23 页 · PDF 3.9 MB",
+        file: "files/马淑慧_作品集.pdf"
+      },
+      {
+        zh: "简历",
+        en: "Resume",
+        meta: "1 页 · PDF 0.3 MB",
+        file: "files/马淑慧_简历.pdf"
+      }
+    ]
   }
 };
 /* ==================================================================
@@ -1097,6 +1137,7 @@ var SITE = {
         '<a href="#works">Works</a>' +
         '<a href="#how">How</a>' +
         '<a href="#bring">Experience</a>' +
+        '<a href="#download">Download</a>' +
         '<a href="#contact" class="nav__contact">Contact</a>' +
       '</nav>' +
     '</div></header>';
@@ -1389,11 +1430,31 @@ var SITE = {
         '<a href="mailto:' + esc(SITE.email) + '" class="contact__mail link-calm">' + esc(SITE.email) + '</a>' +
         '<a href="tel:' + esc(SITE.phone) + '" class="contact__phone link-calm">' + esc(SITE.phone) + '</a>' +
       '</div>' +
+      docsHTML() +
       '<div class="contact__foot reveal"' + d(320) + '>' +
         '<span>' + esc(SITE.name) + '</span>' +
         '<span>' + esc(SITE.location) + '</span>' +
       '</div>' +
     '</section>';
+  }
+
+  /* ---------- 文档下载：Contact 内的细线列表 ---------- */
+  function docsHTML() {
+    var cfg = SITE.docs;
+    if (!cfg || !cfg.items || !cfg.items.length) return "";
+    var rows = cfg.items.map(function (it, i) {
+      return '<a class="docs__row reveal" href="' + encodeURI(it.file) + '"' +
+          ' target="_blank" rel="noopener"' + d(i * 90) + '>' +
+          '<span class="docs__name">' + esc(it.zh) + '</span>' +
+          '<span class="docs__en">' + esc(it.en) + '</span>' +
+          '<span class="docs__meta">' + esc(it.meta) + '</span>' +
+          '<span class="docs__arrow" aria-hidden="true">&#8595;</span>' +
+        '</a>';
+    }).join("");
+    return '<div class="docs" id="download">' +
+      '<p class="docs__eyebrow reveal">' + esc(cfg.eyebrow) + '</p>' +
+      '<div class="docs__list">' + rows + '</div>' +
+    '</div>';
   }
 
   /* ---------- 渲染 ---------- */
